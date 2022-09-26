@@ -12,7 +12,7 @@ public class UserInterface {
     }
 
     public void welcome() {
-        System.out.println("Welcome to \u001b[1mKEA\u001b[0m!\nCan you finde the way to the canteen?");
+        System.out.println("Welcome to \u001b[1mKEA\u001b[0m!\nCan you find the way to the canteen?");
     }
 
     public void direction() {
@@ -34,18 +34,18 @@ public class UserInterface {
                     System.out.println("Commands:");
                     System.out.println("Type 'help' for commands");
                     System.out.println("Type 'look' to look around in the room");
-                    System.out.println("Type 'north' for going north direction");
-                    System.out.println("Type 'south' for going south direction");
-                    System.out.println("Type 'east' for going east direction");
-                    System.out.println("Type 'west' for going west direction");
-                    System.out.println("Type 'exit' for going exiting the adventure");
+                    System.out.println("Type 'north' to go in a northern direction");
+                    System.out.println("Type 'south' to go in a southern direction");
+                    System.out.println("Type 'east' to go in an eastern direction");
+                    System.out.println("Type 'west' to go in a western direction");
+                    System.out.println("Type 'exit' to exit the adventure");
 
                 }
                 case "exit" -> {
                     System.out.println("Shutting down.");
                     System.exit(1);
                 }
-                default -> System.out.println("Error");
+                default -> System.out.println("Error - wrong input. Type 'help' to see commands");
             }
         }
     }
