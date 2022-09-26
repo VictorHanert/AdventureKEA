@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -15,25 +16,20 @@ public class UserInterface {
     }
 
     public void direction() {
-        String direction = scan.nextLine();
+        String input = "";
 
-        switch (direction) {
-            case "Nord":
-                System.out.println("Going North");
-                break;
-            case "South":
-                System.out.println("Going south");
-                break;
-            case "East":
-                System.out.println("Going east");
-                break;
-            case "West":
-                System.out.println("Going west");
-                break;
-            default:
-                System.out.println("Error");
-                break;
+        while (!input.equals("Exit")) {
+            input = scan.nextLine();
+            switch (input) {
+                case "North" -> System.out.println("Going North");
+                case "South" -> System.out.println("Going south");
+                case "East" -> System.out.println("Going east");
+                case "West" -> System.out.println("Going west");
+                case "Exit" -> {
+                    System.exit(1);
+                }
+                default -> System.out.println("Error");
+            }
         }
-
     }
 }
