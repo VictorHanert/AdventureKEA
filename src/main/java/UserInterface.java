@@ -30,7 +30,17 @@ public class UserInterface {
                     System.out.println(adventure.getCurrentRoom().getDescription());
                     System.out.println("So you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
                 }
-                case "help" -> System.out.println("Get commands and instruction");
+                case "help" -> {
+                    System.out.println("Commands:");
+                    System.out.println("Type 'help' for commands");
+                    System.out.println("Type 'look' to look around in the room");
+                    System.out.println("Type 'north' for going north direction");
+                    System.out.println("Type 'south' for going south direction");
+                    System.out.println("Type 'east' for going east direction");
+                    System.out.println("Type 'west' for going west direction");
+                    System.out.println("Type 'exit' for going exiting the adventure");
+
+                }
                 case "exit" -> {
                     System.out.println("Shutting down.");
                     System.exit(1);
