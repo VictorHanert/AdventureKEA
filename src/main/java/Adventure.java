@@ -16,10 +16,9 @@ public class Adventure {
         Room room8 = new Room("the office", "There is teachers sitting and drinking coffee");
         Room room9 = new Room("the 'fredags-bar'", "There is horny girls and cheap 'buca-shots");
 
+        // Setting directions for each room
         room1.setEast(room2);
-        room1.setNorth(null);
-        room1.setWest(null);
-        room2.setWest(room1);
+        room1.setSouth(room4);
 
         room2.setWest(room1);
         room2.setEast(room3);
@@ -31,6 +30,7 @@ public class Adventure {
         room4.setSouth(room7);
 
         room5.setSouth(room8);
+
 
         room6.setNorth(room3);
         room6.setSouth(room9);
@@ -48,21 +48,24 @@ public class Adventure {
         currentRoom = room1;
     }
 
-
     public Room getCurrentRoom() {
         return currentRoom;
     }
 
     public void goNorth() {
-       currentRoom = currentRoom.getNorth();
+        if (currentRoom.getNorth() != null){
+            currentRoom = currentRoom.getNorth();
+            System.out.println(getCurrentRoom().getDescription());
+        } else {
+            System.out.println("you cannot go that way");
+        }
     }
 
     public void goSouth() {
         if (currentRoom.getSouth() != null){
             currentRoom = currentRoom.getSouth();
-            System.out.println(getCurrentRoom().getName() + getCurrentRoom().getDescription());
-
-        }else {
+            System.out.println(getCurrentRoom().getDescription());
+        } else {
             System.out.println("you cannot go that way");
         }
     }
@@ -70,14 +73,19 @@ public class Adventure {
     public void goEast() {
         if (currentRoom.getEast()!=null) {
             currentRoom = currentRoom.getEast();
-            System.out.println(getCurrentRoom().getName() + getCurrentRoom().getDescription());
+            System.out.println(getCurrentRoom().getDescription());
         } else {
             System.out.println("you can't go that way");
         }
     }
 
     public void goWest() {
-        currentRoom = currentRoom.getWest();
+        if (currentRoom.getWest()!=null) {
+            currentRoom = currentRoom.getWest();
+            System.out.println(getCurrentRoom().getDescription());
+        } else {
+            System.out.println("you can't go that way");
+        }
     }
 
 }

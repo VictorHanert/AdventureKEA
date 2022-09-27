@@ -19,7 +19,6 @@ public class Room {
         this.east = east;
         this.west = west;
     }
-
      */
 
     public String getName() {
@@ -36,17 +35,14 @@ public class Room {
 
     public void setSouth(Room room) {
         this.south = room;
-
     }
 
     public void setEast(Room room) {
         this.east = room;
-
     }
 
     public void setWest(Room room) {
         this.west = room;
-
     }
 
     public Room getNorth() {

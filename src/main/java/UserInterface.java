@@ -8,7 +8,6 @@ public class UserInterface {
     public void start() {
         welcome();
         direction();
-        adventure.createRooms();
     }
 
     public void welcome() {
@@ -16,6 +15,7 @@ public class UserInterface {
     }
 
     public void direction() {
+        adventure.createRooms();
         String input = "";
 
         while (!input.equals("Exit")) {
