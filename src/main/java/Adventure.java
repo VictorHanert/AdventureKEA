@@ -17,6 +17,8 @@ public class Adventure {
         Room room9 = new Room("the 'fredags-bar'", "There is horny girls and cheap 'buca-shots");
 
         room1.setEast(room2);
+        room1.setNorth(null);
+        room1.setWest(null);
         room2.setWest(room1);
 
         room2.setWest(room1);
@@ -56,11 +58,22 @@ public class Adventure {
     }
 
     public void goSouth() {
-        currentRoom = currentRoom.getSouth();
+        if (currentRoom.getSouth() != null){
+            currentRoom = currentRoom.getSouth();
+            System.out.println(getCurrentRoom().getName() + getCurrentRoom().getDescription());
+
+        }else {
+            System.out.println("you cannot go that way");
+        }
     }
 
     public void goEast() {
-        currentRoom = currentRoom.getEast();
+        if (currentRoom.getEast()!=null) {
+            currentRoom = currentRoom.getEast();
+            System.out.println(getCurrentRoom().getName() + getCurrentRoom().getDescription());
+        } else {
+            System.out.println("you can't go that way");
+        }
     }
 
     public void goWest() {

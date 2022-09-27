@@ -31,16 +31,21 @@ public class Room {
     }
 
     public void setNorth(Room room) {
+        this.north = room;
     }
 
     public void setSouth(Room room) {
+        this.south = room;
+
     }
 
     public void setEast(Room room) {
+        this.east = room;
 
     }
 
     public void setWest(Room room) {
+        this.west = room;
 
     }
 
