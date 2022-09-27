@@ -21,28 +21,37 @@ public class UserInterface {
         while (!input.equals("Exit")) {
             input = scan.nextLine().toLowerCase();
             switch (input) {
-                case "north" -> {
+                case "n":
+                case "north":
+                case "go north":
                     System.out.println("Going north");
                     adventure.goNorth();
-                }
-                case "south" -> {
+                break;
+                case "s":
+                case "south":
+                case "go south":
                     System.out.println("Going south");
                     adventure.goSouth();
-                }
-                case "east" -> {
+                break;
+                case "e":
+                case "east":
+                case "go east":
                     System.out.println("Going east");
                     adventure.goEast();
-                }
-                case "west" -> {
+                break;
+                case "w":
+                case "west":
+                case "go west":
                     System.out.println("Going west");
                     adventure.goWest();
-                }
-                case "look" -> {
+                break;
+                case "look":
                     System.out.println("Looking around...");
                     System.out.println(adventure.getCurrentRoom().getDescription());
                     System.out.println("So you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
-                }
-                case "help" -> {
+                break;
+                case "help":
+                case "h":
                     System.out.println("Commands:");
                     System.out.println("Type 'help' for commands");
                     System.out.println("Type 'look' to look around in the room");
@@ -51,13 +60,14 @@ public class UserInterface {
                     System.out.println("Type 'east' to go in an eastern direction");
                     System.out.println("Type 'west' to go in a western direction");
                     System.out.println("Type 'exit' to exit the adventure");
-                }
-
-                case "exit" -> {
+                break;
+                case "exit":
                     System.out.println("Shutting down.");
                     System.exit(1);
-                }
-                default -> System.out.println("Error - wrong input. Type 'help' to see commands");
+                break;
+                default:
+                    System.out.println("Error - wrong input. Type 'help' to see commands");
+                break;
             }
         }
     }
