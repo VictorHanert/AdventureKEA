@@ -11,7 +11,7 @@ public class UserInterface {
     }
 
     public void welcome() {
-        System.out.println("Welcome to \u001b[1mKEA\u001b[0m!\nCan you find the way to the canteen?");
+        System.out.println("Welcome to \u001b[1mKEA\u001b[0m!\nCan you find the way to the fredagsbar?");
     }
 
     public void direction() {
