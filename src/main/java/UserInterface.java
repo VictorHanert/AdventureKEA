@@ -6,7 +6,6 @@ public class UserInterface {
     Adventure adventure = new Adventure();
 
     public void start() {
-        adventure.createRooms();
         welcome();
         direction();
     }
@@ -16,15 +15,28 @@ public class UserInterface {
     }
 
     public void direction() {
+        adventure.createRooms();
         String input = "";
 
         while (!input.equals("Exit")) {
             input = scan.nextLine().toLowerCase();
             switch (input) {
-                case "north" -> System.out.println("Going north");
-                case "south" -> System.out.println("Going south");
-                case "east" -> System.out.println("Going east");
-                case "west" -> System.out.println("Going west");
+                case "north" -> {
+                    System.out.println("Going north");
+                    adventure.goNorth();
+                }
+                case "south" -> {
+                    System.out.println("Going south");
+                    adventure.goSouth();
+                }
+                case "east" -> {
+                    System.out.println("Going east");
+                    adventure.goEast();
+                }
+                case "west" -> {
+                    System.out.println("Going west");
+                    adventure.goWest();
+                }
                 case "look" -> {
                     System.out.println("Looking around...");
                     System.out.println(adventure.getCurrentRoom().getDescription());
