@@ -9,12 +9,12 @@ public class Adventure {
 
         Room room3 = new Room("the game-room", "There is table tennis");
 
-        Room room4 = new Room("4", "4");
-        Room room5 = new Room("5", "5");
-        Room room6 = new Room("6", "6");
-        Room room7 = new Room("7", "7");
-        Room room8 = new Room("8", "8");
-        Room room9 = new Room("9", "9");
+        Room room4 = new Room("the bicycle-basement", "Its a very big room and there is a lot of bicycles");
+        Room room5 = new Room("the code-lab", "There is a lot of nerds, who sitting and programming shitty program");
+        Room room6 = new Room("the library", "There is bookshelves and very quiet");
+        Room room7 = new Room("the canteen", "There is people sitting and eating food");
+        Room room8 = new Room("the office", "There is teachers sitting and drinking coffee");
+        Room room9 = new Room("the 'fredags-bar'", "There is horny girls and cheap 'buca-shots");
 
         room1.setEast(room2);
         room2.setWest(room1);
@@ -65,7 +65,6 @@ public class Adventure {
 
     public void goWest() {
         currentRoom = currentRoom.getWest();
-
-
     }
+
 }
