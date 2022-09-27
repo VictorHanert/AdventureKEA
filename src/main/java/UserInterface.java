@@ -51,8 +51,8 @@ public class UserInterface {
                     System.out.println("Type 'east' to go in an eastern direction");
                     System.out.println("Type 'west' to go in a western direction");
                     System.out.println("Type 'exit' to exit the adventure");
-
                 }
+
                 case "exit" -> {
                     System.out.println("Shutting down.");
                     System.exit(1);

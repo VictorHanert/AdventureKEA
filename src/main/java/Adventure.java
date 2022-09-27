@@ -4,17 +4,14 @@ public class Adventure {
 
     public void createRooms() {
         Room room1 = new Room("a classroom", "There is tables and chairs");
-
         Room room2 = new Room("the toilet", "There is toilets and a hand wash");
-
-        Room room3 = new Room("the game-room", "There is table tennis");
-
-        Room room4 = new Room("the bicycle-basement", "Its a very big room and there is a lot of bicycles");
-        Room room5 = new Room("the code-lab", "There is a lot of nerds, who sitting and programming shitty program");
+        Room room3 = new Room("the bicycle-basement", "Its a very big room and there is a lot of bicycles");
+        Room room4 = new Room("the game-room", "There is table tennis");
+        Room room5 = new Room("the 'fredags-bar'", "There is horny girls and cheap 'buca-shots");
         Room room6 = new Room("the library", "There is bookshelves and very quiet");
-        Room room7 = new Room("the canteen", "There is people sitting and eating food");
+        Room room7 = new Room("the code-lab", "There is a lot of nerds, who sitting and programming shitty program");
         Room room8 = new Room("the office", "There is teachers sitting and drinking coffee");
-        Room room9 = new Room("the 'fredags-bar'", "There is horny girls and cheap 'buca-shots");
+        Room room9 = new Room("the canteen", "There is people sitting and eating food");
 
         // Setting directions for each room
         room1.setEast(room2);
@@ -30,7 +27,6 @@ public class Adventure {
         room4.setSouth(room7);
 
         room5.setSouth(room8);
-
 
         room6.setNorth(room3);
         room6.setSouth(room9);
