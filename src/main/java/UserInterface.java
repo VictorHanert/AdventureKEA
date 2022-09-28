@@ -2,10 +2,11 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
+    private Adventure adventure;
     private final Scanner scan = new Scanner(System.in).useLocale(Locale.ENGLISH);
-    Adventure adventure = new Adventure();
 
     public void start() {
+        adventure = new Adventure();
         welcome();
         direction();
     }
@@ -15,9 +16,7 @@ public class UserInterface {
     }
 
     public void direction() {
-        adventure.createRooms();
         String input = "";
-
         while (!input.equals("Exit")) {
             input = scan.nextLine().toLowerCase();
             switch (input) {
@@ -25,25 +24,25 @@ public class UserInterface {
                 case "north":
                 case "go north":
                     System.out.println("Going north");
-                    adventure.goNorth();
+                    adventure.go("north");
                 break;
                 case "s":
                 case "south":
                 case "go south":
                     System.out.println("Going south");
-                    adventure.goSouth();
+                    adventure.go("south");
                 break;
                 case "e":
                 case "east":
                 case "go east":
                     System.out.println("Going east");
-                    adventure.goEast();
+                    adventure.go("east");
                 break;
                 case "w":
                 case "west":
                 case "go west":
                     System.out.println("Going west");
-                    adventure.goWest();
+                    adventure.go("west");
                 break;
                 case "look":
                     System.out.println("Looking around...");
