@@ -1,5 +1,4 @@
 public class Adventure {
-    private Room currentRoom;
     private Map map = new Map();
     private Player player;
 

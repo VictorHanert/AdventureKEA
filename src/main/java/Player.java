@@ -1,5 +1,4 @@
 public class Player {
-    private Map map = new Map();
     private Room currentRoom;
 
     Room getCurrentRoom() {
