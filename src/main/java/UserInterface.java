@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -51,8 +52,7 @@ public class UserInterface {
                 case "look" -> {
                     System.out.println("Looking around...");
                     System.out.println(adventure.getCurrentRoom().getDescription());
-                    System.out.println(" ");
-                    System.out.println("So you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
+                    System.out.println("\nSo you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
                 }
                 case "help", "h" -> {
                     System.out.println("Commands:");

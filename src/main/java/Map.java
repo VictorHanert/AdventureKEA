@@ -17,6 +17,7 @@ public class Map {
         room1.setSouth(room4);
         room1.createItem("Flashlight", "Black long thing with light");
         room1.createItem("Din mor", "Hun er stor");
+        room1.createItem("Din far", "Han er flot");
 
         room2.setWest(room1);
         room2.setEast(room3);

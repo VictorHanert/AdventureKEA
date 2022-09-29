@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Room {
-
     private ArrayList<Item> items = new ArrayList<>();
 
     public void createItem(String itemName, String itemDescription) {
@@ -20,7 +19,6 @@ public class Room {
         this.name = name;
         this.description = description;
     }
-
 
     public String getName() {
         return name;
@@ -62,12 +60,11 @@ public class Room {
         return west;
     }
 
-    public String getItemName() {
+    public String getItem() {
         String itemName = "";
         for (Item item : items) {
             itemName += item.getItemName();
         }
             return itemName;
-
     }
 }
