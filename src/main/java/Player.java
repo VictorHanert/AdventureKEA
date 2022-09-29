@@ -8,6 +8,7 @@ public class Player {
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
+
     public boolean move(String direction) {
         Room requestedRoom = null;
         if (direction.charAt(0) == 'n') {

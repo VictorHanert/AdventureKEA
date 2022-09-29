@@ -47,6 +47,7 @@ public class UserInterface {
                 case "look":
                     System.out.println("Looking around...");
                     System.out.println(adventure.getCurrentRoom().getDescription());
+                    System.out.println(" ");
                     System.out.println("So you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
                 break;
                 case "help":
@@ -59,6 +60,17 @@ public class UserInterface {
                     System.out.println("Type 'east' to go in an eastern direction");
                     System.out.println("Type 'west' to go in a western direction");
                     System.out.println("Type 'exit' to exit the adventure");
+                break;
+                case "inventory":
+                case "inv":
+                    System.out.println("Here is your inventory: ");
+                    System.out.println(adventure.getCurrentRoom().getItemName());
+                break;
+                case "take":
+                    System.out.println("Take the item.");
+                break;
+                case "drop":
+                    System.out.println("Drop the item.");
                 break;
                 case "exit":
                     System.out.println("Shutting down.");

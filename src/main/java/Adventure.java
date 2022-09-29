@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Adventure {
     private Map map = new Map();
     private Player player;
@@ -11,6 +13,7 @@ public class Adventure {
     public Room getCurrentRoom() {
         return player.getCurrentRoom();
     }
+
     public boolean go(String direction) {
         return player.move(direction);
     }
