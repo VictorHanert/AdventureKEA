@@ -1,5 +1,8 @@
+import java.util.ArrayList;
+
 public class Player {
     private Room currentRoom;
+    private ArrayList<Item> playerInventory = new ArrayList<>();
 
     Room getCurrentRoom() {
         return currentRoom;
@@ -13,19 +16,27 @@ public class Player {
         Room requestedRoom = null;
         if (direction.charAt(0) == 'n') {
             requestedRoom = currentRoom.getNorth();
-        } else if(direction.charAt(0) == 'e') {
+        } else if (direction.charAt(0) == 'e') {
             requestedRoom = currentRoom.getEast();
-        } else if(direction.charAt(0) == 'w') {
+        } else if (direction.charAt(0) == 'w') {
             requestedRoom = currentRoom.getWest();
-        } else if(direction.charAt(0) == 's') {
+        } else if (direction.charAt(0) == 's') {
             requestedRoom = currentRoom.getSouth();
         }
 
         if (requestedRoom != null) {
             currentRoom = requestedRoom;
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
+
+    public ArrayList<Item> getPlayerInventory() {
+        return playerInventory;
+    }
+
+    public void addItem(Item item){
+        playerInventory.add(item);
     }
 }

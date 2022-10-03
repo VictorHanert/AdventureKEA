@@ -69,6 +69,10 @@ public class Room {
         roomItems.add(item);
     }
 
+    public void addItem(Item item){
+        roomItems.add(item);
+    }
+
     public ArrayList<Item> getRoomItems(){
         return roomItems;
     }

@@ -10,6 +10,10 @@ public class Adventure {
         player.setCurrentRoom(map.getCurrentRoom());
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public Room getCurrentRoom() {
         return player.getCurrentRoom();
     }

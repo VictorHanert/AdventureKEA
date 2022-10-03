@@ -52,6 +52,7 @@ public class UserInterface {
                 case "look" -> {
                     System.out.println("Looking around...");
                     System.out.println(adventure.getCurrentRoom().getDescription());
+                    System.out.println("Items in the room: " + adventure.getCurrentRoom().getRoomItems());
                     System.out.println("\nSo you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
                 }
                 case "help", "h" -> {
@@ -66,9 +67,21 @@ public class UserInterface {
                 }
                 case "inventory", "inv" -> {
                     System.out.println("Here is your inventory: ");
-                    System.out.println("Items: " + adventure.getCurrentRoom().getRoomItems());
+                    System.out.println(adventure.getPlayer().getPlayerInventory());
+                    //System.out.println("Items: " + adventure.getCurrentRoom().getRoomItems());
+                    //System.out.println(adventure.getPlayer().getPlayerInventory());
                 }
-                case "take" -> System.out.println("Take the item.");
+                case "take" -> {
+                    /*Item itemPickedUp = adventure.getPlayer().getCurrentRoom().removeItem(direction);
+                    if (itemPickedUp == null){
+                        System.out.println("no such item..");
+                    } else {
+                        System.out.println("you picked up " + itemPickedUp.getItemName());
+                        adventure.getPlayer().addItem(itemPickedUp);
+                    }
+
+                     */
+                }
                 case "drop" -> System.out.println("Drop the item.");
                 case "exit" -> {
                     System.out.println("Shutting down the adventure...");
