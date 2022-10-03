@@ -6,6 +6,7 @@ public class Item {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
     }
+
     public String getItemName() {
         return itemName;
     }
@@ -13,4 +14,8 @@ public class Item {
         return itemDescription;
     }
 
+    @Override
+    public String toString() {
+        return itemName;
+    }
 }

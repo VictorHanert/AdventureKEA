@@ -66,12 +66,12 @@ public class UserInterface {
                 }
                 case "inventory", "inv" -> {
                     System.out.println("Here is your inventory: ");
-                    System.out.println(adventure.getCurrentRoom().getItem());
+                    System.out.println("Items: " + adventure.getCurrentRoom().getRoomItems());
                 }
                 case "take" -> System.out.println("Take the item.");
                 case "drop" -> System.out.println("Drop the item.");
                 case "exit" -> {
-                    System.out.println("Shutting down.");
+                    System.out.println("Shutting down the adventure...");
                     System.exit(1);
                 }
                 default -> System.out.println("Error - wrong input. Type 'help' to see commands");
