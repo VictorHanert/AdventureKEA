@@ -21,5 +21,13 @@ public class Adventure {
     public boolean go(String direction) {
         return player.move(direction);
     }
+
+    public Item takeItem(String itemName) {
+        return player.takeItem(itemName);
+    }
+
+    public Item dropItem(String itemName) {
+        return player.dropItem(itemName);
+    }
 }
 

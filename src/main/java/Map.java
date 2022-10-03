@@ -15,13 +15,13 @@ public class Map {
         // Setting directions for each room
         room1.setEast(room2);
         room1.setSouth(room4);
-        room1.createItem("Flashlight", "Black long thing with light");
-        room1.createItem("Din mor", "Hun er stor");
-        room1.createItem("Din far", "Han er flot");
+        room1.createItem("flashlight", "Black long thing with light");
+        room1.createItem("mor", "Hun er stor");
+        room1.createItem("far", "Han er flot");
 
         room2.setWest(room1);
         room2.setEast(room3);
-        room2.createItem("Bottle", "A glass bottle with cold water");
+        room2.createItem("bottle", "A glass bottle with cold water");
 
         room3.setWest(room2);
         room3.setSouth(room6);

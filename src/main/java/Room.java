@@ -55,25 +55,27 @@ public class Room {
         return west;
     }
 
-    /*public String getItem() {
-        String itemName = "";
-        for (Item item : items) {
-            itemName += item.getItemName();
-        }
-            return itemName;
-    }
-     */
 
     public void createItem(String itemName, String itemDescription) {
         Item item = new Item(itemName, itemDescription);
         roomItems.add(item);
     }
 
+    public ArrayList<Item> getRoomItems(){
+        return roomItems;
+    }
+
     public void addItem(Item item){
         roomItems.add(item);
     }
 
-    public ArrayList<Item> getRoomItems(){
-        return roomItems;
+    public Item removeItem(String itemName){
+        for (Item item : roomItems){
+            if (item.getItemName().equals(itemName)){
+                roomItems.remove(item);
+                return item;
+            }
+        }
+        return null;
     }
 }
