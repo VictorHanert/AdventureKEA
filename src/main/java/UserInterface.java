@@ -18,6 +18,7 @@ public class UserInterface {
 
     public void direction() {
         String input = "";
+        String direction = "";
         while (!input.equals("Exit")) {
             input = scan.nextLine().toLowerCase();
             switch (input) {
@@ -68,21 +69,25 @@ public class UserInterface {
                 case "inventory", "inv" -> {
                     System.out.println("Here is your inventory: ");
                     System.out.println(adventure.getPlayer().getPlayerInventory());
-                    //System.out.println("Items: " + adventure.getCurrentRoom().getRoomItems());
-                    //System.out.println(adventure.getPlayer().getPlayerInventory());
                 }
                 case "take" -> {
-                    /*Item itemPickedUp = adventure.getPlayer().getCurrentRoom().removeItem(direction);
+                    Item itemPickedUp = adventure.getPlayer().getCurrentRoom().removeItem(direction);
                     if (itemPickedUp == null){
-                        System.out.println("no such item..");
+                        System.out.println("There is no such item..");
                     } else {
-                        System.out.println("you picked up " + itemPickedUp.getItemName());
+                        System.out.println("You picked up " + itemPickedUp.getItemName());
                         adventure.getPlayer().addItem(itemPickedUp);
                     }
-
-                     */
                 }
-                case "drop" -> System.out.println("Drop the item.");
+                case "drop" -> {
+                    Item itemDropped = adventure.getPlayer().removeItem(direction);
+                    if (itemDropped == null){
+                        System.out.println("There is no such item...");
+                    } else {
+                        System.out.println("You have dropped " + itemDropped);
+                        adventure.getPlayer().getCurrentRoom().addItem(itemDropped);
+                    }
+                }
                 case "exit" -> {
                     System.out.println("Shutting down the adventure...");
                     System.exit(1);
