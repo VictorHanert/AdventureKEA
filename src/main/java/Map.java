@@ -27,7 +27,7 @@ public class Map {
 
         room4.setNorth(room1);
         room4.setSouth(room7);
-        room4.createItem("bicycle", "A metal horse with two wheels.");
+        room4.createItem("bicycle", "An iron horse with two wheels.");
 
         room5.setSouth(room8);
         room5.createItem("sambuca", "A big glass-bottle with a transparent liquid inside");

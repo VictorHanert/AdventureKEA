@@ -64,12 +64,12 @@ public class UserInterface {
                     System.out.println("\nSo you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
 
                     if (adventure.getCurrentRoom().getRoomItems().size() > 1) {
-                        System.out.println("There is also some items in here: " + adventure.getCurrentRoom().getRoomItems());
+                        System.out.println("There are also some items in here: " + adventure.getCurrentRoom().getRoomItems());
                     } else if (adventure.getCurrentRoom().getRoomItems().size() == 1) {
                         System.out.println("There is also an item in here: " + adventure.getCurrentRoom().getRoomItems());
                     }
                     else {
-                        System.out.println("There is no items in this room.");
+                        System.out.println("There are no items in this room.");
                     }
                 }
                 case "help", "h" -> {
@@ -85,17 +85,17 @@ public class UserInterface {
                 case "take" -> {
                     Item itemPickedUp = adventure.takeItem(commands);
                     if (itemPickedUp == null){
-                        System.out.println("There is no such item..");
+                        System.out.println("There is no item in the room of that name.");
                     } else {
-                        System.out.println("You have picked up " + itemPickedUp + " in " + adventure.getCurrentRoom().getName());
+                        System.out.println("You pick up: " + "\u001b[1m" + itemPickedUp + "\u001b[0m");
                     }
                 }
                 case "drop" -> {
                     Item itemDropped = adventure.dropItem(commands);
                     if (itemDropped == null){
-                        System.out.println("There is no such item...");
+                        System.out.println("You have no item of that name.");
                     } else {
-                        System.out.println("You have dropped " + itemDropped + " in " + adventure.getCurrentRoom().getName());
+                        System.out.println("You drop" + "\u001b[1m" +  itemDropped + "\u001b[0m");
                     }
                 }
                 case "exit" -> {
