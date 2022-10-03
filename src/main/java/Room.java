@@ -78,4 +78,14 @@ public class Room {
         }
         return null;
     }
+
+    public Item removeItem(String itemName){
+        for (Item item : roomItems){
+            if (item.getItemName().equals(itemName)){
+                roomItems.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
 }
