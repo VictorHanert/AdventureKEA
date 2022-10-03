@@ -15,9 +15,7 @@ public class Map {
         // Setting directions for each room
         room1.setEast(room2);
         room1.setSouth(room4);
-        room1.createItem("flashlight", "Black long thing with light");
-        room1.createItem("mor", "Hun er stor");
-        room1.createItem("far", "Han er flot");
+        room1.createItem("lamp", "A metal thing that lights up the room.");
 
         room2.setWest(room1);
         room2.setEast(room3);
@@ -25,17 +23,22 @@ public class Map {
 
         room3.setWest(room2);
         room3.setSouth(room6);
+        room3.createItem("beer", "A green can with the name 'Carlsberg' on it");
 
         room4.setNorth(room1);
         room4.setSouth(room7);
+        room4.createItem("bicycle", "A metal horse with two wheels.");
 
         room5.setSouth(room8);
+        room5.createItem("sambuca", "A big glass-bottle with a transparent liquid inside");
 
         room6.setNorth(room3);
         room6.setSouth(room9);
+        room6.createItem("book", "A heavy leather cover with pages inside.");
 
         room7.setNorth(room4);
         room7.setEast(room8);
+        room7.createItem("knife", "A shiny metal thing with sharper blade at the end.");
 
         room8.setWest(room7);
         room8.setNorth(room5);
