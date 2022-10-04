@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class UserInterface {
     private Adventure adventure;
     private final Scanner scan = new Scanner(System.in).useLocale(Locale.ENGLISH);
-    private String input = "";
     private String itemName = "";
+    private int healthPoints = 100;
 
     public void start() {
         adventure = new Adventure();
@@ -21,7 +21,7 @@ public class UserInterface {
     public void userInput() {
         boolean gameRunning = true;
         while (gameRunning) {
-            input = scan.nextLine().toLowerCase();
+            String input = scan.nextLine().toLowerCase();
 
             String[] inputSplit = input.split(" ");
             String command = inputSplit[0];
@@ -86,7 +86,18 @@ public class UserInterface {
                         System.out.println("You drop: " + "\u001b[1m" +  itemDropped + "\u001b[0m");
                     }
                 }
-                case "health", "heal" -> System.out.println("Your health: " );
+                case "health", "heal" -> {
+                    System.out.println("Your health: " + healthPoints);
+                    if (healthPoints < 25) {
+                        System.out.println("Your health are at a critical level!");
+                    }
+                    else if (healthPoints < 50 && healthPoints > 25) {
+                        System.out.println("Your health are a little low, avoid fighting now...");
+                    }
+                    else {
+                        System.out.println("Your health is good, you can go in battle!");
+                    }
+                }
 
                 case "eat" -> {
                     System.out.println("Eating... ");
