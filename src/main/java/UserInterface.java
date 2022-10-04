@@ -86,7 +86,8 @@ public class UserInterface {
                         System.out.println("You drop: " + "\u001b[1m" +  itemDropped + "\u001b[0m");
                     }
                 }
-                case "health", "heal" -> System.out.println("Your health: " );
+                case "health", "heal" -> System.out.println("Your health: " + adventure.getPlayer().getPlayerHp() );
+
 
                 case "eat" -> {
                     System.out.println("Eating... ");

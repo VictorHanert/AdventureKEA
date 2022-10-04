@@ -1,6 +1,20 @@
 import java.util.ArrayList;
 
 public class Player {
+    private int playerHp;
+
+    public Player() {
+        playerHp = 100;
+    }
+
+    public int getPlayerHp() {
+        return playerHp;
+    }
+
+    public void setPlayerHp(int hp) {
+        playerHp = hp;
+    }
+
     private Room currentRoom;
     private ArrayList<Item> playerInventory = new ArrayList<>();
     Room getCurrentRoom() {
