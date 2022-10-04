@@ -5,12 +5,12 @@ public class UserInterface {
     private Adventure adventure;
     private final Scanner scan = new Scanner(System.in).useLocale(Locale.ENGLISH);
     private String input = "";
-    private String commands = "";
+    private String itemName = "";
 
     public void start() {
         adventure = new Adventure();
         welcome();
-        commands();
+        userInput();
     }
 
     public void welcome() {
@@ -18,15 +18,16 @@ public class UserInterface {
         System.out.println("Type 'help' for all commands.");
     }
 
-    public void commands() {
-        while (!input.equals("Exit")) {
+    public void userInput() {
+        boolean gameRunning = true;
+        while (gameRunning) {
             input = scan.nextLine().toLowerCase();
 
             String[] inputSplit = input.split(" ");
             String command = inputSplit[0];
 
             if (inputSplit.length > 1){
-                commands = inputSplit[1];
+                itemName = inputSplit[1];
             }
 
             switch (command) {
@@ -58,20 +59,7 @@ public class UserInterface {
                         System.out.println("You cannot go that way");
                     }
                 }
-                case "look" -> {
-                    System.out.println("Looking around...");
-                    System.out.println(adventure.getCurrentRoom().getDescription());
-                    System.out.println("\nSo you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
-
-                    if (adventure.getCurrentRoom().getRoomItems().size() > 1) {
-                        System.out.println("There are also some items in here: " + adventure.getCurrentRoom().getRoomItems());
-                    } else if (adventure.getCurrentRoom().getRoomItems().size() == 1) {
-                        System.out.println("There is also an item in here: " + adventure.getCurrentRoom().getRoomItems());
-                    }
-                    else {
-                        System.out.println("There are no items in this room.");
-                    }
-                }
+                case "look" -> lookInTheRoom();
                 case "help", "h" -> {
                     helpMenu();
                 }
@@ -82,8 +70,8 @@ public class UserInterface {
                         System.out.println("Your inventory contains: " + adventure.getPlayer().getPlayerInventory());
                     }
                 }
-                case "take" -> {
-                    Item itemPickedUp = adventure.takeItem(commands);
+                case "take", "add", "pick" -> {
+                    Item itemPickedUp = adventure.takeItem(itemName);
                     if (itemPickedUp == null){
                         System.out.println("There is no item in the room of that name.");
                     } else {
@@ -91,19 +79,48 @@ public class UserInterface {
                     }
                 }
                 case "drop" -> {
-                    Item itemDropped = adventure.dropItem(commands);
+                    Item itemDropped = adventure.dropItem(itemName);
                     if (itemDropped == null){
                         System.out.println("You have no item of that name.");
                     } else {
-                        System.out.println("You drop" + "\u001b[1m" +  itemDropped + "\u001b[0m");
+                        System.out.println("You drop: " + "\u001b[1m" +  itemDropped + "\u001b[0m");
                     }
                 }
-                case "exit" -> {
+                case "health", "heal" -> System.out.println("Your health: " );
+
+                case "eat" -> {
+                    System.out.println("Eating... ");
+                }
+
+                case "exit", "quit", "leave" -> {
                     System.out.println("Shutting down the adventure...");
-                    System.exit(1);
+                    gameRunning = false;
                 }
                 default -> System.out.println("Error - wrong input. Type 'help' to see commands");
             }
+
+            if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
+                System.out.println("You have found the FREDAGS-BAR!.");
+                gameRunning = false;
+            }
+        }
+    }
+
+    private void lookInTheRoom() {
+        System.out.println("Looking around...");
+        System.out.println(adventure.getCurrentRoom().getDescription());
+        System.out.println("\nSo you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
+        //Print items in currentRoom
+        if (adventure.getCurrentRoom().getRoomItems().size() > 1) {
+            System.out.println("There are also some items in here: " + adventure.getCurrentRoom().getRoomItems());
+        } else if (adventure.getCurrentRoom().getRoomItems().size() == 1) {
+            System.out.println("There is also an item in here: " + adventure.getCurrentRoom().getRoomItems());
+        }
+        //Print food in currentRoom
+        if (adventure.getCurrentRoom().getRoomFood().size() > 1) {
+            System.out.println("There are also some food in here: " + adventure.getCurrentRoom().getRoomFood());
+        } else if (adventure.getCurrentRoom().getRoomFood().size() == 1) {
+            System.out.println("There is also a piece of food in here: " + adventure.getCurrentRoom().getRoomFood());
         }
     }
 
