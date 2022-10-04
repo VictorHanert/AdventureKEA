@@ -18,6 +18,10 @@ public class Adventure {
         return player.getCurrentRoom();
     }
 
+    public Room getWinningRoom() {
+        return map.getEndRoom();
+    }
+
     public boolean go(String direction) {
         return player.move(direction);
     }
