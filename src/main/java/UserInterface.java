@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class UserInterface {
     private Adventure adventure;
     private final Scanner scan = new Scanner(System.in).useLocale(Locale.ENGLISH);
+    private String input = "";
     private String itemName = "";
-    private int healthPoints = 100;
 
     public void start() {
         adventure = new Adventure();
@@ -21,7 +21,7 @@ public class UserInterface {
     public void userInput() {
         boolean gameRunning = true;
         while (gameRunning) {
-            String input = scan.nextLine().toLowerCase();
+            input = scan.nextLine().toLowerCase();
 
             String[] inputSplit = input.split(" ");
             String command = inputSplit[0];
@@ -60,9 +60,7 @@ public class UserInterface {
                     }
                 }
                 case "look" -> lookInTheRoom();
-                case "help", "h" -> {
-                    helpMenu();
-                }
+                case "help", "h" -> helpMenu();
                 case "inventory", "inv" -> {
                     if (adventure.getPlayer().getPlayerInventory().isEmpty()){
                         System.out.println("Your inventory is empty.");
@@ -86,21 +84,22 @@ public class UserInterface {
                         System.out.println("You drop: " + "\u001b[1m" +  itemDropped + "\u001b[0m");
                     }
                 }
-                case "health", "heal" -> {
-                    System.out.println("Your health: " + healthPoints);
-                    if (healthPoints < 25) {
+                case "health", "hp" -> {
+                    System.out.println("Your health: " + adventure.getPlayer().getPlayerHp());
+                    if (adventure.getPlayer().getPlayerHp() < 25) {
                         System.out.println("Your health are at a critical level!");
-                    }
-                    else if (healthPoints < 50 && healthPoints > 25) {
+                    } else if (adventure.getPlayer().getPlayerHp() < 50 && adventure.getPlayer().getPlayerHp() > 25) {
                         System.out.println("Your health are a little low, avoid fighting now...");
-                    }
-                    else {
+                    } else {
                         System.out.println("Your health is good, you can go in battle!");
                     }
                 }
-
+                case "info", "description" -> {
+                    System.out.println("Description of: " );
+                }
                 case "eat" -> {
                     System.out.println("Eating... ");
+
                 }
 
                 case "exit", "quit", "leave" -> {

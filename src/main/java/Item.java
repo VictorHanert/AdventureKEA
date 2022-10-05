@@ -16,6 +16,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return itemName;
+        return "\u001b[1m" + itemName + "\u001b[0m";
     }
 }

@@ -81,8 +81,8 @@ public class Room {
     }
 
 
-    public void createFood(String foodName, String foodDescription, int health) {
-        Food food = new Food(foodName, foodDescription, health);
+    public void createFood(String foodName, String foodDescription, int healthPoints) {
+        Food food = new Food(foodName, foodDescription, healthPoints);
         roomFood.add(food);
     }
 

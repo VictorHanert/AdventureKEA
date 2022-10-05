@@ -1,24 +1,17 @@
-public class Food {
-    private String foodName;
-    private String foodDescription;
+public class Food extends Item {
     private int healthPoints;
 
-
-    public Food(String foodName, String foodDescription, int healthPoints) {
-        this.foodName = foodName;
-        this.foodDescription = foodDescription;
+    public Food(String itemName, String itemDescription, int healthPoints) {
+        super(itemName, itemDescription);
         this.healthPoints = healthPoints;
     }
 
-    public String getFoodName(){
-        return foodName.toLowerCase();
-    }
-
-    public int getHealthPoints(){
+    public int getHealthPoints() {
         return healthPoints;
     }
 
-    public String toString(){
-        return foodName;
+    @Override
+    public String toString() {
+        return "\u001b[1m" + super.toString() + "\u001b[0m (" + healthPoints + " health-points)";
     }
 }
