@@ -127,18 +127,11 @@ public class UserInterface {
     private void lookInTheRoom() {
         System.out.println("Looking around...");
         System.out.println(adventure.getCurrentRoom().getDescription());
-        System.out.println("\nSo you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m");
+        System.out.println("\nSo you must be in \u001b[1m" + adventure.getCurrentRoom().getName() + "\u001b[0m, and you see: ");
+
         //Print items in currentRoom
-        if (adventure.getCurrentRoom().getRoomItems().size() > 1) {
-            System.out.println("There are also some items in here: " + adventure.getCurrentRoom().getRoomItems());
-        } else if (adventure.getCurrentRoom().getRoomItems().size() == 1) {
-            System.out.println("There is also an item in here: " + adventure.getCurrentRoom().getRoomItems());
-        }
-        //Print food in currentRoom
-        if (adventure.getCurrentRoom().getRoomFood().size() > 1) {
-            System.out.println("There are also some food in here: " + adventure.getCurrentRoom().getRoomFood());
-        } else if (adventure.getCurrentRoom().getRoomFood().size() == 1) {
-            System.out.println("There is also a piece of food in here: " + adventure.getCurrentRoom().getRoomFood());
+        for (Item item : adventure.getCurrentRoom().getRoomItems()) {
+            System.out.println("A \u001b[1m" + item.getItemName() +"\u001b[0m - "+ item.getItemDescription());
         }
     }
 
