@@ -33,5 +33,9 @@ public class Adventure {
     public Item dropItem(String itemName) {
         return player.dropItem(itemName);
     }
+
+    public Status playerEat(String itemName) {
+        return player.eatFood(itemName);
+    }
 }
 

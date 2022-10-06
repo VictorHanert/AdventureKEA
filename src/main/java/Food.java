@@ -12,6 +12,6 @@ public class Food extends Item {
 
     @Override
     public String toString() {
-        return "\u001b[1m" + super.toString() + "\u001b[0m (" + healthPoints + " health-points)";
+        return "\u001b[1m" + super.toString() + "\u001b[0m (" + healthPoints + " hp)";
     }
 }

@@ -74,4 +74,25 @@ public class Player {
         currentRoom.addItem(droppedItem);
         return droppedItem;
     }
+
+    public Item findItem(String itemName) {
+        for (Item item : playerInventory) {
+            if (item.getItemName().equals(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public Status eatFood(String itemName) {
+        Item item = findItem(itemName);
+        if (item instanceof Food) {
+            playerHp += (((Food)item).getHealthPoints());
+            removeItem(itemName);
+            return Status.OK;
+        } else if (item != null){
+            return Status.NOT_OK;
+        }
+        return Status.NOT_FOUND;
+    }
 }

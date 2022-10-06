@@ -98,8 +98,16 @@ public class UserInterface {
                     System.out.println("Description of: " );
                 }
                 case "eat" -> {
-                    System.out.println("Eating... ");
-
+                    Status result = adventure.playerEat(itemName);
+                    if (result == Status.OK) {
+                        System.out.println("Eating... " + itemName);
+                        System.out.println("Health: " + adventure.getPlayer().getPlayerHp());
+                    } else if (result == Status.NOT_OK) {
+                        System.out.println("Cant eat this shit: " + itemName);
+                    }
+                    else {
+                        System.out.println("Shit not found: " + input);
+                    }
                 }
 
                 case "exit", "quit", "leave" -> {
