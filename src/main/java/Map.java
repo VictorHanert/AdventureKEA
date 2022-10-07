@@ -19,6 +19,7 @@ public class Map {
         room1.createItem("lamp", "A metal thing that lights up the room.");
         room1.createFood("apple", "A shiny red round fruit", 10);
         room1.createFood("biscuit", "A dry piece of some sort", 2);
+        room1.createWeapon("sword", "A heavy shiny sword", 20);
 
         room2.setWest(room1);
         room2.setEast(room3);
@@ -31,6 +32,7 @@ public class Map {
         room4.setNorth(room1);
         room4.setSouth(room7);
         room4.createItem("bicycle", "An iron horse with two wheels.");
+        room4.createWeapon("hammer", "A wood-handle with a heavy iron-head", 5);
 
         room5.setSouth(room8);
         room5.createFood("sambuca", "A big glass-bottle with a transparent liquid inside", 999);
@@ -41,7 +43,7 @@ public class Map {
 
         room7.setNorth(room4);
         room7.setEast(room8);
-        room7.createItem("knife", "A shiny metal thing with sharper blade at the end.");
+        room7.createWeapon("knife", "A shiny metal thing with sharper blade at the end.", 10);
         room7.createFood("cake", "A sweet piece of a chocolate cake", -5);
         room7.createFood("sandwich", "Bread with pieces of cheese and ham inside. But look very rotten and nasty", -40);
         room7.createFood("bread", "A nice warm piece of bread with butter on top", 25);
@@ -52,6 +54,7 @@ public class Map {
 
         room9.setWest(room8);
         room9.setNorth(room6);
+        room9.createWeapon("computer", "a grey Intel laptop", 1);
 
         currentRoom = room1;
         endRoom = room5;

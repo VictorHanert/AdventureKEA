@@ -65,7 +65,10 @@ public class UserInterface {
                     if (adventure.getPlayer().getPlayerInventory().isEmpty()){
                         System.out.println("Your inventory is empty.");
                     }else{
-                        System.out.println("Your inventory contains: " + adventure.getPlayer().getPlayerInventory());
+                        System.out.println("Your inventory contains:");
+                        for (Item item : adventure.getPlayer().getPlayerInventory()) {
+                            System.out.println("A \u001b[1m" + item.getItemName() +"\u001b[0m - "+ item.getItemDescription());
+                        }
                     }
                 }
                 case "take", "add", "pick" -> {
@@ -78,10 +81,11 @@ public class UserInterface {
                 }
                 case "drop" -> {
                     Item itemDropped = adventure.dropItem(itemName);
-                    if (itemDropped == null){
-                        System.out.println("You have no item of that name.");
-                    } else {
+                    if (itemDropped != null){
                         System.out.println("You drop: " + "\u001b[1m" +  itemDropped + "\u001b[0m");
+                        adventure.getPlayer().getCurrentRoom().addItem(itemDropped);
+                    } else {
+                        System.out.println("You have no item of that name.");
                     }
                 }
                 case "health", "hp" -> {
@@ -94,22 +98,36 @@ public class UserInterface {
                         System.out.println("Your health is good, you can go in battle!");
                     }
                 }
-                case "info", "description" -> {
-                    System.out.println("Description of: " );
-                }
                 case "eat" -> {
                     Status result = adventure.playerEat(itemName);
-                    if (result == Status.OK) {
-                        System.out.println("Eating... " + itemName);
-                        System.out.println("Health: " + adventure.getPlayer().getPlayerHp());
-                    } else if (result == Status.NOT_OK) {
-                        System.out.println("Cant eat this shit: " + itemName);
-                    }
-                    else {
-                        System.out.println("Shit not found: " + input);
+                    switch (result) {
+                        case OK -> {
+                            System.out.println("Eating " + itemName);
+                            System.out.println("Current hp: " + adventure.getPlayer().getPlayerHp());
+                        }
+                        case NOT_OK -> System.out.println("You cant eat a " + itemName);
+                        case NOT_FOUND -> System.out.println("No item was found: " + input);
                     }
                 }
-
+                case "equip", "use" -> {
+                    Status result = adventure.playerEquip(itemName);
+                    switch (result) {
+                        case OK -> {
+                            System.out.println("Equipping the weapon \u001b[1m" + itemName + "\u001b[0m");
+                            System.out.println("Current damage pr. hit: " + adventure.getPlayer().getPlayerDamage());
+                        }
+                        case NOT_OK -> System.out.println("You cant equip a " + itemName);
+                        case NOT_FOUND -> System.out.println("No item was found with the name: " + input);
+                    }
+                }
+                case "attack", "kill", "fight" -> {
+                    if (adventure.playerEquip(itemName) != null) {
+                        System.out.println("Attacking the enemy...");
+                    } else if (adventure.playerEquip(itemName) == null) {
+                        System.out.println("You have no weapon equipped");
+                    }
+                }
+                case "damage" -> System.out.println("Current damage pr hit: " + adventure.getPlayer().getPlayerDamage());
                 case "exit", "quit", "leave" -> {
                     System.out.println("Shutting down the adventure...");
                     gameRunning = false;

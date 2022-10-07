@@ -2,17 +2,19 @@ import java.util.ArrayList;
 
 public class Player {
     private int playerHp;
+    private int playerDamage;
 
     public Player() {
         playerHp = 100;
+        playerDamage = 0;
     }
 
     public int getPlayerHp() {
         return playerHp;
     }
 
-    public void setPlayerHp(int hp) {
-        playerHp = hp;
+    public int getPlayerDamage() {
+        return playerDamage;
     }
 
     private Room currentRoom;
@@ -91,6 +93,17 @@ public class Player {
             removeItem(itemName);
             return Status.OK;
         } else if (item != null){
+            return Status.NOT_OK;
+        }
+        return Status.NOT_FOUND;
+    }
+
+    public Status equipWeapon(String itemName) {
+        Item item = findItem(itemName);
+        if (item instanceof Weapon) {
+            playerDamage += (((Weapon)item).getDamage() - getPlayerDamage());
+            return Status.OK;
+        } else if (item != null) {
             return Status.NOT_OK;
         }
         return Status.NOT_FOUND;
