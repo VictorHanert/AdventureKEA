@@ -62,7 +62,7 @@ public class Player {
                 return item;
             }
         }
-        return null;
+       return null;
     }
 
     public Item takeItem(String itemName) {
@@ -72,9 +72,10 @@ public class Player {
     }
 
     public Item dropItem(String itemName) {
-        Item droppedItem = removeItem(itemName);
-        currentRoom.addItem(droppedItem);
-        return droppedItem;
+        //Item droppedItem = removeItem(itemName);
+        //currentRoom.addItem(droppedItem);
+        //return droppedItem;
+        return removeItem(itemName);
     }
 
     public Item findItem(String itemName) {
@@ -88,24 +89,28 @@ public class Player {
 
     public Status eatFood(String itemName) {
         Item item = findItem(itemName);
-        if (item instanceof Food) {
-            playerHp += (((Food)item).getHealthPoints());
+        if (item == null) {
+            return Status.NOT_FOUND;
+        }
+        else if (item instanceof Food food) {
+            playerHp += food.getHealthPoints();
             removeItem(itemName);
             return Status.OK;
-        } else if (item != null){
+        } else {
             return Status.NOT_OK;
         }
-        return Status.NOT_FOUND;
     }
 
     public Status equipWeapon(String itemName) {
         Item item = findItem(itemName);
-        if (item instanceof Weapon) {
-            playerDamage += (((Weapon)item).getDamage() - getPlayerDamage());
+        if (item == null) {
+            return Status.NOT_FOUND;
+        }
+        else if (item instanceof Weapon weapon) {
+            playerDamage += weapon.getDamage() - getPlayerDamage();
             return Status.OK;
-        } else if (item != null) {
+        } else {
             return Status.NOT_OK;
         }
-        return Status.NOT_FOUND;
     }
 }

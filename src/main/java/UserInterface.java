@@ -4,13 +4,12 @@ import java.util.Scanner;
 public class UserInterface {
     private Adventure adventure;
     private final Scanner scan = new Scanner(System.in).useLocale(Locale.ENGLISH);
-    private String input = "";
-    private String itemName = "";
 
     public void start() {
         adventure = new Adventure();
+        String input = "";
         welcome();
-        userInput();
+        userInput(input);
     }
 
     public void welcome() {
@@ -18,16 +17,17 @@ public class UserInterface {
         System.out.println("Type 'help' for all commands.");
     }
 
-    public void userInput() {
+    public void userInput(String input) {
         boolean gameRunning = true;
         while (gameRunning) {
             input = scan.nextLine().toLowerCase();
 
             String[] inputSplit = input.split(" ");
+            String userChoice = "";
             String command = inputSplit[0];
 
             if (inputSplit.length > 1){
-                itemName = inputSplit[1];
+                userChoice = inputSplit[1];
             }
 
             switch (command) {
@@ -72,7 +72,7 @@ public class UserInterface {
                     }
                 }
                 case "take", "add", "pick" -> {
-                    Item itemPickedUp = adventure.takeItem(itemName);
+                    Item itemPickedUp = adventure.takeItem(userChoice);
                     if (itemPickedUp == null){
                         System.out.println("There is no item in the room of that name.");
                     } else {
@@ -80,7 +80,7 @@ public class UserInterface {
                     }
                 }
                 case "drop" -> {
-                    Item itemDropped = adventure.dropItem(itemName);
+                    Item itemDropped = adventure.dropItem(userChoice);
                     if (itemDropped != null){
                         System.out.println("You drop: " + "\u001b[1m" +  itemDropped + "\u001b[0m");
                         adventure.getPlayer().getCurrentRoom().addItem(itemDropped);
@@ -99,31 +99,31 @@ public class UserInterface {
                     }
                 }
                 case "eat" -> {
-                    Status result = adventure.playerEat(itemName);
+                    Status result = adventure.playerEat(userChoice);
                     switch (result) {
                         case OK -> {
-                            System.out.println("Eating " + itemName);
+                            System.out.println("Eating " + userChoice);
                             System.out.println("Current hp: " + adventure.getPlayer().getPlayerHp());
                         }
-                        case NOT_OK -> System.out.println("You cant eat a " + itemName);
-                        case NOT_FOUND -> System.out.println("No item was found: " + input);
+                        case NOT_OK -> System.out.println("You cant eat a " + userChoice);
+                        case NOT_FOUND -> System.out.println("No item was found: " + userChoice);
                     }
                 }
                 case "equip", "use" -> {
-                    Status result = adventure.playerEquip(itemName);
+                    Status result = adventure.playerEquip(userChoice);
                     switch (result) {
                         case OK -> {
-                            System.out.println("Equipping the weapon \u001b[1m" + itemName + "\u001b[0m");
+                            System.out.println("Equipping the weapon \u001b[1m" + userChoice + "\u001b[0m");
                             System.out.println("Current damage pr. hit: " + adventure.getPlayer().getPlayerDamage());
                         }
-                        case NOT_OK -> System.out.println("You cant equip a " + itemName);
-                        case NOT_FOUND -> System.out.println("No item was found with the name: " + input);
+                        case NOT_OK -> System.out.println("You cant equip a " + userChoice);
+                        case NOT_FOUND -> System.out.println("No item was found with the name: " + userChoice);
                     }
                 }
                 case "attack", "kill", "fight" -> {
-                    if (adventure.playerEquip(itemName) != null) {
+                    if (adventure.playerEquip(userChoice) != null) {
                         System.out.println("Attacking the enemy...");
-                    } else if (adventure.playerEquip(itemName) == null) {
+                    } else if (adventure.playerEquip(userChoice) == null) {
                         System.out.println("You have no weapon equipped");
                     }
                 }
@@ -132,7 +132,7 @@ public class UserInterface {
                     System.out.println("Shutting down the adventure...");
                     gameRunning = false;
                 }
-                default -> System.out.println("Error - wrong input. Type 'help' to see commands");
+                default -> System.out.println("Error - wrong userChoice. Type 'help' to see commands");
             }
 
             if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
