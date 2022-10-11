@@ -20,6 +20,7 @@ public class Map {
         room1.createFood("apple", "A shiny red round fruit", 10);
         room1.createFood("biscuit", "A dry piece of some sort", 2);
         room1.createWeapon("sword", "A heavy shiny sword", 20);
+        room1.createEnemy("lars", "He is very big and strong.", 50, 2, new Weapon("Giant sword", "A huge sword", 2));
 
         room2.setWest(room1);
         room2.setEast(room3);
@@ -36,6 +37,7 @@ public class Map {
 
         room5.setSouth(room8);
         room5.createFood("sambuca", "A big glass-bottle with a transparent liquid inside", 999);
+        room5.createEnemy("orken", "A very scary creature thats protects the 'Fredags-bar against strangers.", 99, 50, new Weapon("Fists", "His hands are huge.", 50));
 
         room6.setNorth(room3);
         room6.setSouth(room9);

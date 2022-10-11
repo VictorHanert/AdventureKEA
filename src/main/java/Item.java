@@ -14,6 +14,10 @@ public class Item {
         return itemDescription;
     }
 
+    public String getName() {
+        return itemName;
+    }
+
     @Override
     public String toString() {
         return "\u001b[1m" + itemName + "\u001b[0m";

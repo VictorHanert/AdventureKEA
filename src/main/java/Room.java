@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Room {
     private ArrayList<Item> roomItems = new ArrayList<>();
-    private ArrayList<Food> roomFood = new ArrayList<>();
-    private ArrayList<Food> roomWeapon = new ArrayList<>();
+    private ArrayList<Enemy> enemies = new ArrayList<>();
+
 
     private String name;
     private String description;
@@ -69,14 +69,33 @@ public class Room {
         roomItems.add(food);
     }
 
-    public void createWeapon(String weaponName, String weaponDescription, int damage) {
-        Weapon weapon = new Weapon(weaponName, weaponDescription, damage);
-        roomItems.add(weapon);
+    public void createMeleeWeapon(String weaponName, String weaponDescription, int damage) {
+        MeleeWeapon meleeWeapon = new MeleeWeapon(weaponName, weaponDescription, damage);
+        roomItems.add(meleeWeapon);
+    }
+    public void createRangedWeapon(String weaponName, String weaponDescription, int damage, int ammo) {
+        RangedWeapon rangedWeapon = new RangedWeapon(weaponName, weaponDescription, damage, ammo);
+        roomItems.add(rangedWeapon);
+    }
+
+
+    public void createEnemy(String name, String description, int healthPoints,int damage, Weapon weapon){
+        Enemy enemy = new Enemy(name, description, healthPoints, damage, weapon);
+        addEnemy(enemy);
+    }
+
+    private void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
     }
 
     public ArrayList<Item> getRoomItems(){
         return roomItems;
     }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
+    }
+
 
     public void addItem(Item item){
         roomItems.add(item);

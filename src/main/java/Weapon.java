@@ -1,4 +1,4 @@
-public class Weapon extends Item {
+public abstract class Weapon extends Item {
     private int damage;
 
     public Weapon(String weaponName, String weaponDescription, int damage) {
@@ -11,7 +11,12 @@ public class Weapon extends Item {
     }
 
     @Override
+    public String getName() {
+        return super.getItemName();
+    }
+
     public String toString() {
         return "\u001b[1m" + super.toString() + "\u001b[0m (" + damage + " damage)";
     }
+
 }

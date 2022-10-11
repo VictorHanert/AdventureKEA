@@ -135,8 +135,9 @@ public class UserInterface {
             }
 
             if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
-                System.out.println("You have found the FREDAGS-BAR!.");
-                gameRunning = false;
+                System.out.println("You have found the FREDAGS-BAR.");
+                System.out.println("But before you can enter the party, you need to defeat " + adventure.getCurrentRoom().getEnemies());
+                //gameRunning = false;
             }
         }
     }
@@ -149,6 +150,11 @@ public class UserInterface {
         //Print items in currentRoom
         for (Item item : adventure.getCurrentRoom().getRoomItems()) {
             System.out.println("A \u001b[1m" + item.getItemName() +"\u001b[0m - "+ item.getItemDescription());
+        }
+        //Print enemies in currentRoom
+        for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
+            System.out.println("\n\u001b[1mAn enemy is in the room: " + enemy.getEnemyName() +"\u001b[0m - "+ enemy.getDescription());
+            System.out.println("The enemy has: " + enemy.getHealthPoints() + "HP");
         }
     }
 
