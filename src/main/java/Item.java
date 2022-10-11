@@ -10,6 +10,7 @@ public class Item {
     public String getItemName() {
         return itemName;
     }
+
     public String getItemDescription() {
         return itemDescription;
     }

@@ -19,6 +19,7 @@ public class Player {
 
     private Room currentRoom;
     private ArrayList<Item> playerInventory = new ArrayList<>();
+
     Room getCurrentRoom() {
         return currentRoom;
     }
@@ -51,18 +52,18 @@ public class Player {
         return playerInventory;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         playerInventory.add(item);
     }
 
-    public Item removeItem(String itemName){
-        for (Item item : playerInventory){
-            if (item.getItemName().equals(itemName)){
+    public Item removeItem(String itemName) {
+        for (Item item : playerInventory) {
+            if (item.getItemName().equals(itemName)) {
                 playerInventory.remove(item);
                 return item;
             }
         }
-       return null;
+        return null;
     }
 
     public Item takeItem(String itemName) {
@@ -90,8 +91,7 @@ public class Player {
         Item item = findItem(itemName);
         if (item == null) {
             return Status.NOT_FOUND;
-        }
-        else if (item instanceof Food food) {
+        } else if (item instanceof Food food) {
             playerHp += food.getHealthPoints();
             removeItem(itemName);
             return Status.OK;
@@ -104,8 +104,7 @@ public class Player {
         Item item = findItem(itemName);
         if (item == null) {
             return Status.NOT_FOUND;
-        }
-        else if (item instanceof Weapon weapon) {
+        } else if (item instanceof Weapon weapon) {
             playerDamage += weapon.getDamage() - getPlayerDamage();
             return Status.OK;
         } else {

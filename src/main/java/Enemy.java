@@ -5,7 +5,7 @@ public class Enemy {
     private int damage;
     private Weapon weapon;
 
-    public Enemy(String enemyName, String description, int healthPoints, int damage, Weapon weapon){
+    public Enemy(String enemyName, String description, int healthPoints, int damage, Weapon weapon) {
         this.enemyName = enemyName;
         this.description = description;
         this.healthPoints = healthPoints;
