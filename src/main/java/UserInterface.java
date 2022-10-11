@@ -76,14 +76,13 @@ public class UserInterface {
                     if (itemPickedUp == null){
                         System.out.println("There is no item in the room of that name.");
                     } else {
-                        System.out.println("You pick up: " + "\u001b[1m" + itemPickedUp + "\u001b[0m");
+                        System.out.println("You pick up: " + "\u001b[1m" + userChoice + "\u001b[0m");
                     }
                 }
                 case "drop" -> {
                     Item itemDropped = adventure.dropItem(userChoice);
                     if (itemDropped != null){
-                        System.out.println("You drop: " + "\u001b[1m" +  itemDropped + "\u001b[0m");
-                        adventure.getPlayer().getCurrentRoom().addItem(itemDropped);
+                        System.out.println("You drop: " + "\u001b[1m" +  userChoice + "\u001b[0m");
                     } else {
                         System.out.println("You have no item of that name.");
                     }

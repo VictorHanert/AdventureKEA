@@ -72,10 +72,9 @@ public class Player {
     }
 
     public Item dropItem(String itemName) {
-        //Item droppedItem = removeItem(itemName);
-        //currentRoom.addItem(droppedItem);
-        //return droppedItem;
-        return removeItem(itemName);
+        Item droppedItem = removeItem(itemName);
+        currentRoom.addItem(droppedItem);
+        return droppedItem;
     }
 
     public Item findItem(String itemName) {
