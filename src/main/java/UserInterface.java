@@ -154,7 +154,7 @@ public class UserInterface {
         //Print enemies in currentRoom
         for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
             System.out.println("\n\u001b[1mAn enemy is in the room: " + enemy.getEnemyName() +"\u001b[0m - "+ enemy.getDescription());
-            System.out.println("The enemy has: " + enemy.getHealthPoints() + "HP");
+            System.out.println("The enemy has: " + enemy.getEnemyHp() + "HP");
         }
     }
 
