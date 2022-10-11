@@ -112,4 +112,10 @@ public class Player {
             return Status.NOT_OK;
         }
     }
+
+
+    public int enemyAttacks(int damage) {
+        this.playerHp -= damage;
+        return this.playerHp;
+    }
 }
