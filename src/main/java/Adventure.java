@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Adventure {
     private Map map = new Map();
     private Player player;
