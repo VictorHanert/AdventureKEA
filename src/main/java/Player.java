@@ -12,6 +12,9 @@ public class Player {
     public int getPlayerHp() {
         return playerHp;
     }
+    public void setPlayerHp(int playerHp) {
+        this.playerHp = playerHp;
+    }
 
     public int getPlayerDamage() {
         return playerDamage;
@@ -111,10 +114,15 @@ public class Player {
             return Status.NOT_OK;
         }
     }
+    public void playerAttacks(Enemy enemy) {
+        enemy.setEnemyHp(enemy.getEnemyHp()-playerDamage);
+    }
 
-
-    public int enemyAttacks(int damage) {
-        this.playerHp -= damage;
-        return this.playerHp;
+    public boolean playerDead() {
+        if (playerHp < 1) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }

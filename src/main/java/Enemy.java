@@ -25,13 +25,33 @@ public class Enemy {
         return enemyHp;
     }
 
+    public void setEnemyHp(int enemyHp) {
+        this.enemyHp = enemyHp;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
     public Weapon getWeapon() {
         return weapon;
     }
 
-    public int playerAttacks(int damage) {
-        this.enemyHp -= damage;
-        return this.enemyHp;
+
+    public void enemyAttacks(Player player) {
+        player.setPlayerHp(player.getPlayerHp() - weapon.getDamage());
+    }
+    public int dealDamage(Weapon weapon) {
+        int damageDealt = enemyHp - weapon.getDamage();
+        return damageDealt;
+    }
+
+    public boolean enemyDead() {
+        if (enemyHp < 1) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
     @Override

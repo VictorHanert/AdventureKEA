@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Adventure {
     private Map map = new Map();
     private Player player;
+    private Enemy enemy;
 
     public Adventure() {
         map.createRooms();
@@ -40,6 +41,21 @@ public class Adventure {
 
     public Status playerEquip(String itemName) {
         return player.equipWeapon(itemName);
+    }
+    public boolean playerDead() {
+        return player.playerDead();
+    }
+
+    public boolean enemyDead() {
+        return enemy.enemyDead();
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public Enemy enemyAttacks() {
+        return enemyAttacks();
     }
 }
 

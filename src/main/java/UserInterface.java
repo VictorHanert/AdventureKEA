@@ -119,11 +119,28 @@ public class UserInterface {
                         case NOT_FOUND -> System.out.println("No item was found with the name: " + userChoice);
                     }
                 }
+
+
+
                 case "attack", "kill", "fight" -> {
+
+
+
                     if (adventure.playerEquip(userChoice) != null) {
-                        System.out.println("Attacking the enemy...");
+
+                        for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
+                            System.out.println("Attacking the enemy...");
+                            System.out.println("You hit " + userChoice + " for: " + adventure.getPlayer().getPlayerDamage() + " hp");
+                            adventure.getPlayer().playerAttacks(enemy);
+                            System.out.println(userChoice + " hits you for: " + + enemy.getDamage() + " hp");
+
+                        }
                     } else if (adventure.playerEquip(userChoice) == null) {
                         System.out.println("You have no weapon equipped. Equip a weapon to start a fight.");
+                    } else if (adventure.getCurrentRoom().getEnemies() == null){
+                        System.out.println("There are no enemies in this room");
+                    } else if (adventure.enemyDead()) {
+                        gameRunning = false;
                     }
                 }
                 case "damage" -> System.out.println("Current damage pr hit: " + adventure.getPlayer().getPlayerDamage());
