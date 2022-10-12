@@ -26,54 +26,54 @@ public class UserInterface {
             String userChoice = "";
             String command = inputSplit[0];
 
-            if (inputSplit.length > 1) {
+            if (inputSplit.length > 1){
                 userChoice = inputSplit[1];
             }
 
             switch (command) {
-                case "go north", "north", "n" -> {
-                    if (adventure.go("north")) {
+                case "go north","north", "n" -> {
+                    if (adventure.go("north")){
                         System.out.println("Going north");
-                    } else {
+                    }else{
                         System.out.println("You cannot go that way");
                     }
                 }
-                case "go south", "south", "s" -> {
-                    if (adventure.go("south")) {
+                case "go south","south", "s" -> {
+                    if (adventure.go("south")){
                         System.out.println("Going south");
-                    } else {
+                    }else{
                         System.out.println("You cannot go that way");
                     }
                 }
-                case "go east", "east", "e" -> {
-                    if (adventure.go("east")) {
+                case "go east","east","e" -> {
+                    if (adventure.go("east")){
                         System.out.println("Going east");
-                    } else {
+                    }else{
                         System.out.println("You cannot go that way");
                     }
                 }
-                case "go west", "west", "w" -> {
-                    if (adventure.go("west")) {
+                case "go west","west","w" -> {
+                    if (adventure.go("west")){
                         System.out.println("Going west");
-                    } else {
+                    }else{
                         System.out.println("You cannot go that way");
                     }
                 }
                 case "look" -> lookInTheRoom();
                 case "help", "h" -> helpMenu();
                 case "inventory", "inv" -> {
-                    if (adventure.getPlayer().getPlayerInventory().isEmpty()) {
+                    if (adventure.getPlayer().getPlayerInventory().isEmpty()){
                         System.out.println("Your inventory is empty.");
-                    } else {
+                    }else{
                         System.out.println("Your inventory contains:");
                         for (Item item : adventure.getPlayer().getPlayerInventory()) {
-                            System.out.println("A \u001b[1m" + item.getItemName() + "\u001b[0m - " + item.getItemDescription());
+                            System.out.println("A \u001b[1m" + item.getItemName() +"\u001b[0m - "+ item.getItemDescription());
                         }
                     }
                 }
                 case "take", "add", "pick" -> {
                     Item itemPickedUp = adventure.takeItem(userChoice);
-                    if (itemPickedUp == null) {
+                    if (itemPickedUp == null){
                         System.out.println("There is no item in the room of that name.");
                     } else {
                         System.out.println("You pick up: " + "\u001b[1m" + userChoice + "\u001b[0m");
@@ -81,8 +81,8 @@ public class UserInterface {
                 }
                 case "drop" -> {
                     Item itemDropped = adventure.dropItem(userChoice);
-                    if (itemDropped != null) {
-                        System.out.println("You drop: " + "\u001b[1m" + userChoice + "\u001b[0m");
+                    if (itemDropped != null){
+                        System.out.println("You drop: " + "\u001b[1m" +  userChoice + "\u001b[0m");
                     } else {
                         System.out.println("You have no item of that name.");
                     }
@@ -126,8 +126,7 @@ public class UserInterface {
                         System.out.println("You have no weapon equipped");
                     }
                 }
-                case "damage" ->
-                        System.out.println("Current damage pr hit: " + adventure.getPlayer().getPlayerDamage());
+                case "damage" -> System.out.println("Current damage pr hit: " + adventure.getPlayer().getPlayerDamage());
                 case "exit", "quit", "leave" -> {
                     System.out.println("Shutting down the adventure...");
                     gameRunning = false;
@@ -150,12 +149,12 @@ public class UserInterface {
 
         //Print items in currentRoom
         for (Item item : adventure.getCurrentRoom().getRoomItems()) {
-            System.out.println("A \u001b[1m" + item.getItemName() + "\u001b[0m - " + item.getItemDescription());
+            System.out.println("A \u001b[1m" + item.getItemName() +"\u001b[0m - "+ item.getItemDescription());
         }
         //Print enemies in currentRoom
         for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
-            System.out.println("\n\u001b[1mAn enemy is in the room: " + enemy.getEnemyName() + "\u001b[0m - " + enemy.getDescription());
-            System.out.println("The enemy has: " + enemy.getHealthPoints() + "HP");
+            System.out.println("\n\u001b[1mAn enemy is in the room: " + enemy.getEnemyName() +"\u001b[0m - "+ enemy.getDescription());
+            System.out.println("The enemy has: " + enemy.getEnemyHp() + "HP");
         }
     }
 

@@ -1,14 +1,14 @@
 public class Enemy {
     private String enemyName;
     private String description;
-    private int healthPoints;
+    private int enemyHp;
     private int damage;
     private Weapon weapon;
 
-    public Enemy(String enemyName, String description, int healthPoints, int damage, Weapon weapon) {
+    public Enemy(String enemyName, String description, int enemyHp, int damage, Weapon weapon){
         this.enemyName = enemyName;
         this.description = description;
-        this.healthPoints = healthPoints;
+        this.enemyHp = enemyHp;
         this.damage = damage;
         this.weapon = weapon;
     }
@@ -21,12 +21,17 @@ public class Enemy {
         return enemyName;
     }
 
-    public int getHealthPoints() {
-        return healthPoints;
+    public int getEnemyHp() {
+        return enemyHp;
     }
 
     public Weapon getWeapon() {
         return weapon;
+    }
+
+    public int playerAttacks(int damage) {
+        this.enemyHp -= damage;
+        return this.enemyHp;
     }
 
     @Override

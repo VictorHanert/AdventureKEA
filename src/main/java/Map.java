@@ -28,6 +28,8 @@ public class Map {
 
         room3.setWest(room2);
         room3.setSouth(room6);
+        room3.createEnemy("Slikhår", "En kæmpe bordtennis-tryhard", 20, 5, new RangedWeapon("Bordtennisbat", "Slikhårs eget bordtennisbat", 5, 10));
+        room3.createRangedWeapon("Skærebrætsbat", "Et skærebræt i plastik", 10, 10);
         room3.createItem("beer", "A green can with the name 'Carlsberg' on it");
 
         room4.setNorth(room1);
