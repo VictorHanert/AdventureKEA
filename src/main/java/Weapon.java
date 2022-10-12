@@ -1,6 +1,7 @@
 public abstract class Weapon extends Item {
     private int damage;
 
+
     public Weapon(String weaponName, String weaponDescription, int damage) {
         super(weaponName, weaponDescription);
         this.damage = damage;
@@ -9,8 +10,9 @@ public abstract class Weapon extends Item {
     public int getDamage() {
         return damage;
     }
-    public int attack() {
-        return this.damage;
+    public void attack(Enemy enemy, Weapon weapon) {
+        int damageDealt = enemy.dealDamage(weapon);
+        enemy.hit(damageDealt);
     }
 
     @Override

@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 
 public class Adventure {
-    private Map map = new Map();
+
     private Player player;
+    private Map map = new Map();
     private Enemy enemy;
 
     public Adventure() {
         map.createRooms();
-        player = new Player();
+        player = new Player(100);
         player.setCurrentRoom(map.getCurrentRoom());
     }
 
@@ -54,8 +55,10 @@ public class Adventure {
         return enemy;
     }
 
-    public Enemy enemyAttacks() {
-        return enemyAttacks();
+    public AttackStatus attack(String userChoice) {
+        return player.attackStatus(userChoice);
     }
+
+
 }
 

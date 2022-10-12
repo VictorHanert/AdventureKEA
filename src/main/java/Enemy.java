@@ -37,10 +37,14 @@ public class Enemy {
         return weapon;
     }
 
+    public void hit(int newHp) {
+        this.enemyHp = newHp;
+    }
 
-    public void enemyAttacks(Player player) {
+    public void attack(Player player) {
         player.setPlayerHp(player.getPlayerHp() - weapon.getDamage());
     }
+
     public int dealDamage(Weapon weapon) {
         int damageDealt = enemyHp - weapon.getDamage();
         return damageDealt;

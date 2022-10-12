@@ -123,26 +123,29 @@ public class UserInterface {
 
 
                 case "attack", "kill", "fight" -> {
+                    AttackStatus result = adventure.attack(userChoice);
+                    switch (result) {
+                        case NO_ENEMY -> System.out.println("There is no enemy of that name.");
+                        case NO_WEAPON -> System.out.println("You need to equip a weapon before starting a fight.");
+                        case ATTACK_ENEMY -> {
+                            if (!adventure.playerDead() == false) {
+                                System.out.println("Attacking " + userChoice + "...");
+                                for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
+                                    System.out.println(enemy.getEnemyName() + " is now: " + enemy.getEnemyHp() + " hp");
+                                    if (!enemy.enemyDead()) {
+                                        System.out.println("You now have: " + adventure.getPlayer().getPlayerHp() + " hp");
+                                    }
+                                }
 
 
-
-                    if (adventure.playerEquip(userChoice) != null) {
-
-                        for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
-                            System.out.println("Attacking the enemy...");
-                            System.out.println("You hit " + userChoice + " for: " + adventure.getPlayer().getPlayerDamage() + " hp");
-                            adventure.getPlayer().playerAttacks(enemy);
-                            System.out.println(userChoice + " hits you for: " + + enemy.getDamage() + " hp");
-
+                            } else {
+                                System.out.println("You died. Restart game to start over.");
+                                System.exit(1);
+                            }
                         }
-                    } else if (adventure.playerEquip(userChoice) == null) {
-                        System.out.println("You have no weapon equipped. Equip a weapon to start a fight.");
-                    } else if (adventure.getCurrentRoom().getEnemies() == null){
-                        System.out.println("There are no enemies in this room");
-                    } else if (adventure.enemyDead()) {
-                        gameRunning = false;
                     }
                 }
+
                 case "damage" -> System.out.println("Current damage pr hit: " + adventure.getPlayer().getPlayerDamage());
                 case "exit", "quit", "leave" -> {
                     System.out.println("Shutting down the adventure...");

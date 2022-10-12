@@ -3,8 +3,9 @@ import java.util.ArrayList;
 public class Player {
     private int playerHp;
     private int playerDamage;
+    private Weapon equippedWeapon;
 
-    public Player() {
+    public Player(int playerHp) {
         playerHp = 100;
         playerDamage = 0;
     }
@@ -109,14 +110,43 @@ public class Player {
             return Status.NOT_FOUND;
         }
         else if (item instanceof Weapon weapon) {
+            equippedWeapon = (Weapon) item;
             playerDamage += weapon.getDamage() - getPlayerDamage();
             return Status.OK;
         } else {
             return Status.NOT_OK;
         }
     }
-    public void playerAttacks(Enemy enemy) {
-        enemy.setEnemyHp(enemy.getEnemyHp()-playerDamage);
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void attack(Enemy enemy) {
+        equippedWeapon.attack(enemy,equippedWeapon);
+        if (!enemy.enemyDead()) {
+            enemy.attack(this);
+        }
+    }
+
+
+
+    public AttackStatus attackStatus(String enemyName) {
+
+        if ((equippedWeapon) == null) {
+            return AttackStatus.NO_WEAPON;
+
+        } else if (!currentRoom.getEnemies().isEmpty()) {
+            playerDamage = equippedWeapon.getDamage();
+            for (Enemy enemy : currentRoom.getEnemies()) {
+                attack(enemy);
+
+            }  return AttackStatus.ATTACK_ENEMY;
+
+        } else {
+            return AttackStatus.NO_ENEMY;
+        }
+
     }
 
     public boolean playerDead() {
