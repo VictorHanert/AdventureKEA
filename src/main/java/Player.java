@@ -113,9 +113,16 @@ public class Player {
         }
     }
 
-
     public int enemyAttacks(int damage) {
         this.playerHp -= damage;
         return this.playerHp;
+    }
+
+    public boolean playerDead() {
+        if (playerHp < 1) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }

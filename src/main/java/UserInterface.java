@@ -120,6 +120,7 @@ public class UserInterface {
                     }
                 }
                 case "attack", "kill", "fight" -> {
+
                     if (adventure.playerEquip(userChoice) != null) {
                         System.out.println("Attacking the enemy...");
                     } else if (adventure.playerEquip(userChoice) == null) {
