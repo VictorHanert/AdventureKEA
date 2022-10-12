@@ -28,8 +28,8 @@ public class Map {
 
         room3.setWest(room2);
         room3.setSouth(room6);
-        room3.createEnemy("Slikhår", "En kæmpe bordtennis-tryhard", 20, 5, new RangedWeapon("Bordtennisbat", "Slikhårs eget bordtennisbat", 5, 10));
-        room3.createRangedWeapon("Skærebrætsbat", "Et skærebræt i plastik", 10, 10);
+        room3.createEnemy("slikhair", "The biggest table tennis tryhard", 20, 5, new RangedWeapon("Table tennis bat", "Slikhairs own bat", 5, 10));
+        room3.createRangedWeapon("chopping board", "A chopping board in plastic", 10, 10);
         room3.createItem("beer", "A green can with the name 'Carlsberg' on it");
 
         room4.setNorth(room1);
@@ -39,7 +39,7 @@ public class Map {
 
         room5.setSouth(room8);
         room5.createFood("sambuca", "A big glass-bottle with a transparent liquid inside", 999);
-        room5.createEnemy("orken", "A very scary creature thats protects the 'Fredags-bar against strangers.", 99, 50, new MeleeWeapon("Fists", "His hands are huge.", 50));
+        room5.createEnemy("the orc", "A very scary creature thats protects the 'Fredags-bar against strangers.", 99, 50, new MeleeWeapon("Fists", "His hands are huge.", 50));
 
         room6.setNorth(room3);
         room6.setSouth(room9);

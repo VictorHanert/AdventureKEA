@@ -123,7 +123,7 @@ public class UserInterface {
                     if (adventure.playerEquip(userChoice) != null) {
                         System.out.println("Attacking the enemy...");
                     } else if (adventure.playerEquip(userChoice) == null) {
-                        System.out.println("You have no weapon equipped");
+                        System.out.println("You have no weapon equipped. Equip a weapon to start a fight.");
                     }
                 }
                 case "damage" -> System.out.println("Current damage pr hit: " + adventure.getPlayer().getPlayerDamage());
