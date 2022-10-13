@@ -73,13 +73,13 @@ public class Room {
         MeleeWeapon meleeWeapon = new MeleeWeapon(weaponName, weaponDescription, damage);
         roomItems.add(meleeWeapon);
     }
+
     public void createRangedWeapon(String weaponName, String weaponDescription, int damage, int ammo) {
         RangedWeapon rangedWeapon = new RangedWeapon(weaponName, weaponDescription, damage, ammo);
         roomItems.add(rangedWeapon);
     }
 
-
-    public void createEnemy(String name, String description, int healthPoints,int damage, Weapon weapon){
+    public void createEnemy(String name, String description, int healthPoints, int damage, Weapon weapon) {
         Enemy enemy = new Enemy(name, description, healthPoints, damage, weapon);
         addEnemy(enemy);
     }
@@ -88,7 +88,7 @@ public class Room {
         enemies.add(enemy);
     }
 
-    public ArrayList<Item> getRoomItems(){
+    public ArrayList<Item> getRoomItems() {
         return roomItems;
     }
 
@@ -96,14 +96,13 @@ public class Room {
         return enemies;
     }
 
-
-    public void addItem(Item item){
+    public void addItem(Item item) {
         roomItems.add(item);
     }
 
-    public Item removeItem(String itemName){
-        for (Item item : roomItems){
-            if (item.getItemName().equals(itemName)){
+    public Item removeItem(String itemName) {
+        for (Item item : roomItems) {
+            if (item.getItemName().equals(itemName)) {
                 roomItems.remove(item);
                 return item;
             }

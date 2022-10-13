@@ -65,10 +65,10 @@ public class Map {
     }
 
     public Room getCurrentRoom() {
-        return  currentRoom;
+        return currentRoom;
     }
 
-    public Room getEndRoom(){
+    public Room getEndRoom() {
         return endRoom;
     }
 
