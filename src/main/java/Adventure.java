@@ -38,19 +38,8 @@ public class Adventure {
         return player.eatFood(itemName);
     }
 
-    public Status playerEquip(String itemName) {
+    public Status equip(String itemName) {
         return player.equipWeapon(itemName);
-    }
-    public boolean playerDead() {
-        return player.playerDead();
-    }
-
-    public boolean enemyDead() {
-        return enemy.enemyDead();
-    }
-
-    public Enemy getEnemy() {
-        return enemy;
     }
 
     public AttackStatus attack(String userChoice) {

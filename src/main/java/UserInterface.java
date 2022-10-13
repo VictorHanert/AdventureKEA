@@ -109,17 +109,16 @@ public class UserInterface {
                     }
                 }
                 case "equip", "use" -> {
-                    Status result = adventure.playerEquip(userChoice);
+                    Status result = adventure.equip(userChoice);
                     switch (result) {
                         case OK -> {
                             System.out.println("Equipping the weapon \u001b[1m" + userChoice + "\u001b[0m");
-                            System.out.println("Current damage pr. hit: " + adventure.getPlayer().getPlayerDamage());
+                            System.out.println("Current damage pr. hit: " + adventure.getPlayer().getEquippedWeapon().getDamage());
                         }
                         case NOT_OK -> System.out.println("You cant equip a " + userChoice);
                         case NOT_FOUND -> System.out.println("No item was found with the name: " + userChoice);
                     }
                 }
-
 
 
                 case "attack", "kill", "fight" -> {
@@ -128,11 +127,11 @@ public class UserInterface {
                         case NO_ENEMY -> System.out.println("There is no enemy of that name.");
                         case NO_WEAPON -> System.out.println("You need to equip a weapon before starting a fight.");
                         case ATTACK_ENEMY -> {
-                            if (!adventure.playerDead() == false) {
+                            if (!adventure.getPlayer().died()) {
                                 System.out.println("Attacking " + userChoice + "...");
                                 for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
                                     System.out.println(enemy.getEnemyName() + " is now: " + enemy.getEnemyHp() + " hp");
-                                    if (!enemy.enemyDead()) {
+                                    if (!enemy.died()) {
                                         System.out.println("You now have: " + adventure.getPlayer().getPlayerHp() + " hp");
                                     }
                                 }
@@ -145,6 +144,7 @@ public class UserInterface {
                         }
                     }
                 }
+
 
                 case "damage" -> System.out.println("Current damage pr hit: " + adventure.getPlayer().getPlayerDamage());
                 case "exit", "quit", "leave" -> {

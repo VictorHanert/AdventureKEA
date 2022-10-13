@@ -4,6 +4,7 @@ public class Enemy {
     private int enemyHp;
     private int damage;
     private Weapon weapon;
+    private Room room;
 
     public Enemy(String enemyName, String description, int enemyHp, int damage, Weapon weapon){
         this.enemyName = enemyName;
@@ -50,8 +51,10 @@ public class Enemy {
         return damageDealt;
     }
 
-    public boolean enemyDead() {
+    public boolean died() {
         if (enemyHp < 1) {
+            room.addItem(weapon);
+            room.removeEnemy(this);
             return true;
         }else {
             return false;

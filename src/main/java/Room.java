@@ -109,4 +109,7 @@ public class Room {
         }
         return null;
     }
+    public void removeEnemy(Enemy enemy){
+        enemies.remove(enemy);
+    }
 }

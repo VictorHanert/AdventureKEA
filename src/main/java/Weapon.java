@@ -10,6 +10,7 @@ public abstract class Weapon extends Item {
     public int getDamage() {
         return damage;
     }
+
     public void attack(Enemy enemy, Weapon weapon) {
         int damageDealt = enemy.dealDamage(weapon);
         enemy.hit(damageDealt);

@@ -4,12 +4,11 @@ public class Player {
     private int playerHp;
     private int playerDamage;
     private Weapon equippedWeapon;
+    private Room currentRoom;
 
-    public Player(int playerHp) {
-        playerHp = 100;
-        playerDamage = 0;
+    public Player (int playerHp) {
+        this.playerHp = playerHp;
     }
-
     public int getPlayerHp() {
         return playerHp;
     }
@@ -21,8 +20,9 @@ public class Player {
         return playerDamage;
     }
 
-    private Room currentRoom;
+
     private ArrayList<Item> playerInventory = new ArrayList<>();
+
     Room getCurrentRoom() {
         return currentRoom;
     }
@@ -109,26 +109,24 @@ public class Player {
         if (item == null) {
             return Status.NOT_FOUND;
         }
-        else if (item instanceof Weapon weapon) {
+        else if (item instanceof Weapon) {
             equippedWeapon = (Weapon) item;
-            playerDamage += weapon.getDamage() - getPlayerDamage();
             return Status.OK;
         } else {
             return Status.NOT_OK;
         }
     }
 
-    public Weapon getEquippedWeapon() {
+        public Weapon getEquippedWeapon() {
         return equippedWeapon;
     }
 
     public void attack(Enemy enemy) {
         equippedWeapon.attack(enemy,equippedWeapon);
-        if (!enemy.enemyDead()) {
+        if (!enemy.died()) {
             enemy.attack(this);
         }
     }
-
 
 
     public AttackStatus attackStatus(String enemyName) {
@@ -149,7 +147,7 @@ public class Player {
 
     }
 
-    public boolean playerDead() {
+    public boolean died() {
         if (playerHp < 1) {
             return true;
         }else {
