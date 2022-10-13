@@ -20,7 +20,7 @@ public class Map {
         room1.createFood("apple", "A shiny red round fruit", 10);
         room1.createFood("biscuit", "A dry piece of some sort", 2);
         room1.createMeleeWeapon("sword", "A heavy shiny sword", 20);
-        room1.createEnemy("lars", "He is very big and strong.", 50, 2, new MeleeWeapon("Giant sword", "A huge sword", 2));
+        room1.createEnemy("lars", "He is very big and strong.", 50, 2, new MeleeWeapon("Giant sword", "A huge sword", 2), room1);
 
         room2.setWest(room1);
         room2.setEast(room3);
@@ -28,7 +28,7 @@ public class Map {
 
         room3.setWest(room2);
         room3.setSouth(room6);
-        room3.createEnemy("slikhair", "The biggest table tennis tryhard", 20, 5, new RangedWeapon("Table tennis bat", "Slikhairs own bat", 5, 10));
+        room3.createEnemy("slikhair", "The biggest table tennis tryhard", 20, 5, new RangedWeapon("Table tennis bat", "Slikhairs own bat", 5, 10), room3);
         room3.createRangedWeapon("chopping board", "A chopping board in plastic", 10, 10);
         room3.createItem("beer", "A green can with the name 'Carlsberg' on it");
 
@@ -39,7 +39,7 @@ public class Map {
 
         room5.setSouth(room8);
         room5.createFood("sambuca", "A big glass-bottle with a transparent liquid inside", 999);
-        room5.createEnemy("the orc", "A very scary creature thats protects the 'Fredags-bar against strangers.", 99, 50, new MeleeWeapon("Fists", "His hands are huge.", 50));
+        room5.createEnemy("the orc", "A very scary creature thats protects the 'Fredags-bar against strangers.", 99, 50, new MeleeWeapon("Fists", "His hands are huge.", 50), room5);
 
         room6.setNorth(room3);
         room6.setSouth(room9);

@@ -79,8 +79,8 @@ public class Room {
         roomItems.add(rangedWeapon);
     }
 
-    public void createEnemy(String name, String description, int healthPoints, int damage, Weapon weapon) {
-        Enemy enemy = new Enemy(name, description, healthPoints, damage, weapon);
+    public void createEnemy(String name, String description, int healthPoints, int damage, Weapon weapon, Room room) {
+        Enemy enemy = new Enemy(name, description, healthPoints, damage, weapon, room);
         addEnemy(enemy);
     }
 

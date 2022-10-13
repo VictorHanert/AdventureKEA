@@ -6,12 +6,14 @@ public class Player {
     private Weapon equippedWeapon;
     private Room currentRoom;
 
-    public Player (int playerHp) {
+    public Player(int playerHp) {
         this.playerHp = playerHp;
     }
+
     public int getPlayerHp() {
         return playerHp;
     }
+
     public void setPlayerHp(int playerHp) {
         this.playerHp = playerHp;
     }
@@ -55,18 +57,18 @@ public class Player {
         return playerInventory;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         playerInventory.add(item);
     }
 
-    public Item removeItem(String itemName){
-        for (Item item : playerInventory){
-            if (item.getItemName().equals(itemName)){
+    public Item removeItem(String itemName) {
+        for (Item item : playerInventory) {
+            if (item.getItemName().equals(itemName)) {
                 playerInventory.remove(item);
                 return item;
             }
         }
-       return null;
+        return null;
     }
 
     public Item takeItem(String itemName) {
@@ -94,8 +96,7 @@ public class Player {
         Item item = findItem(itemName);
         if (item == null) {
             return Status.NOT_FOUND;
-        }
-        else if (item instanceof Food food) {
+        } else if (item instanceof Food food) {
             playerHp += food.getHealthPoints();
             removeItem(itemName);
             return Status.OK;
@@ -108,8 +109,7 @@ public class Player {
         Item item = findItem(itemName);
         if (item == null) {
             return Status.NOT_FOUND;
-        }
-        else if (item instanceof Weapon) {
+        } else if (item instanceof Weapon) {
             equippedWeapon = (Weapon) item;
             return Status.OK;
         } else {
@@ -117,13 +117,13 @@ public class Player {
         }
     }
 
-        public Weapon getEquippedWeapon() {
+    public Weapon getEquippedWeapon() {
         return equippedWeapon;
     }
 
     public void attack(Enemy enemy) {
-        equippedWeapon.attack(enemy,equippedWeapon);
-        if (!enemy.died()) {
+        equippedWeapon.attack(enemy, equippedWeapon);
+        if (!enemy.enemyDied()) {
             enemy.attack(this);
         }
     }
@@ -138,19 +138,19 @@ public class Player {
             playerDamage = equippedWeapon.getDamage();
             for (Enemy enemy : currentRoom.getEnemies()) {
                 attack(enemy);
-
-            }  return AttackStatus.ATTACK_ENEMY;
+                return AttackStatus.ATTACK_ENEMY;
+            }
 
         } else {
             return AttackStatus.NO_ENEMY;
         }
-
+        return null;
     }
 
     public boolean died() {
         if (playerHp < 1) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }

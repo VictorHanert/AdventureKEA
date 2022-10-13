@@ -128,18 +128,22 @@ public class UserInterface {
                         case NO_WEAPON -> System.out.println("You need to equip a weapon before starting a fight.");
                         case ATTACK_ENEMY -> {
                             if (!adventure.getPlayer().died()) {
-                                System.out.println("Attacking " + userChoice + "...");
-                                for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
-                                    System.out.println(enemy.getEnemyName() + " is now: " + enemy.getEnemyHp() + " hp");
-                                    if (!enemy.died()) {
-                                        System.out.println("You now have: " + adventure.getPlayer().getPlayerHp() + " hp");
+                                if (!adventure.getCurrentRoom().getEnemies().isEmpty()) {
+                                    System.out.println("Attacking " + userChoice + "...");
+                                    for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
+                                        System.out.println(enemy.getEnemyName() + " is now: " + enemy.getEnemyHp() + " hp");
+                                        if (!enemy.enemyDied()) {
+                                            System.out.println("You now have: " + adventure.getPlayer().getPlayerHp() + " hp");
+                                        }
                                     }
                                 }
-
-
-                            } else {
+                                else {
+                                    System.out.println("The enemy is dead!");
+                                }
+                            }
+                            else {
                                 System.out.println("You died. Restart game to start over.");
-                                System.exit(1);
+                                gameRunning = false;
                             }
                         }
                     }

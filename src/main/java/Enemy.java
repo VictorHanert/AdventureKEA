@@ -6,12 +6,13 @@ public class Enemy {
     private Weapon weapon;
     private Room room;
 
-    public Enemy(String enemyName, String description, int enemyHp, int damage, Weapon weapon){
+    public Enemy(String enemyName, String description, int enemyHp, int damage, Weapon weapon, Room room){
         this.enemyName = enemyName;
         this.description = description;
         this.enemyHp = enemyHp;
         this.damage = damage;
         this.weapon = weapon;
+        this.room = room;
     }
 
     public String getDescription() {
@@ -51,7 +52,7 @@ public class Enemy {
         return damageDealt;
     }
 
-    public boolean died() {
+    public boolean enemyDied() {
         if (enemyHp < 1) {
             room.addItem(weapon);
             room.removeEnemy(this);

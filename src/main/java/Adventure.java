@@ -42,8 +42,8 @@ public class Adventure {
         return player.equipWeapon(itemName);
     }
 
-    public AttackStatus attack(String userChoice) {
-        return player.attackStatus(userChoice);
+    public AttackStatus attack(String enemyName) {
+        return player.attackStatus(enemyName);
     }
 
 
