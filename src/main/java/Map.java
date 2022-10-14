@@ -29,7 +29,7 @@ public class Map {
         room3.setWest(room2);
         room3.setSouth(room6);
         room3.createEnemy("slikhair", "The biggest table tennis tryhard", 20, 5, new RangedWeapon("tabletennis-bat", "Slikhairs own bat", 5, 10), room3);
-        room3.createRangedWeapon("chopping board", "A chopping board in plastic", 10, 10);
+        room3.createRangedWeapon("chopping board", "A chopping board in plastic, it is one of the best bats for table tennis", 10, 10);
         room3.createFood("beer", "A green can with the name 'Carlsberg' on it", 8);
 
         room4.setNorth(room1);

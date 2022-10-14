@@ -6,5 +6,22 @@ public class RangedWeapon extends Weapon{
         this.ammo = ammo;
     }
 
+    @Override
+    public int getAmmoLeft() {
+        return ammo;
+    }
 
+    @Override
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
+    }
+
+   @Override
+    public boolean hasAmmo() {
+        if (ammo <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
