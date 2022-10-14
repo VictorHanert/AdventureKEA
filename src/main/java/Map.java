@@ -7,7 +7,7 @@ public class Map {
         Room room2 = new Room("the toilet", "It smells bad in here. There are mirrors and a sink.");
         Room room3 = new Room("the game-room", "The room has a tennis table and a small kitchen.");
         Room room4 = new Room("the bicycle-basement", "You are in a big dark basement with dim lights. There are a lot of bicycles parked.");
-        Room room5 = new Room("the 'fredags-bar'", "You have arrived at the party. There are cheap 'buca-shots' and hot girls.");
+        Room room5 = new Room("the 'fredags-bar'", "You have arrived at the party. There are cheap 'buca-shots' and hot girls behind the closed doors.");
         Room room6 = new Room("the library", "The room you are in has a lot of bookshelves.");
         Room room7 = new Room("the canteen", "This big room has an overpriced shop and plenty of tables and chairs.");
         Room room8 = new Room("the office", "In this room you see a lot of older people and they are all drinking coffee.");
@@ -39,7 +39,7 @@ public class Map {
 
         room5.setSouth(room8);
         room5.createFood("sambuca", "A big glass-bottle with a transparent liquid inside", 999);
-        room5.createEnemy("the orc", "A very scary creature that protects the 'Fredags-bar against strangers.", 99, 50, new MeleeWeapon("Fists", "His hands are huge.", 50), room5);
+        room5.createEnemy("the orc", "A very scary creature that protects the 'Fredags-bar' against strangers.", 99, 50, new MeleeWeapon("Fists", "His hands are huge.", 50), room5);
 
         room6.setNorth(room3);
         room6.setSouth(room9);

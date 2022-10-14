@@ -9,9 +9,8 @@ public class UserInterface {
 
     public void start() {
         adventure = new Adventure();
-        String input = "";
         welcome();
-        userInput(input);
+        userInput();
     }
 
     public void welcome() {
@@ -19,9 +18,9 @@ public class UserInterface {
         System.out.println("Type 'help' for all commands.");
     }
 
-    public void userInput(String input) {
+    public void userInput() {
         while (gameRunning) {
-            input = scan.nextLine().toLowerCase();
+            String input = scan.nextLine().toLowerCase();
 
             String[] inputSplit = input.split(" ");
             String command = inputSplit[0];
@@ -92,7 +91,14 @@ public class UserInterface {
                     switch (result) {
                         case OK -> {
                             System.out.println("Eating " + userChoice);
-                            System.out.println("Current hp: " + adventure.getPlayer().getPlayerHp());
+                            //if food will get you HP to 0 or below print:
+                            if (adventure.getPlayer().getPlayerHp() < 1) {
+                                System.out.println("\u001b[1m\u001B[31mYou died! This food was bad for your health.\u001b[0m");
+                                gameRunning = false;
+                            }
+                            else {
+                                System.out.println("Current hp: " + adventure.getPlayer().getPlayerHp());
+                            }
                         }
                         case NOT_OK -> System.out.println("You cant eat a " + userChoice);
                         case NOT_FOUND -> System.out.println("No item was found: " + userChoice);
@@ -134,7 +140,7 @@ public class UserInterface {
         if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
             System.out.println("But before you can enter the party, you need to defeat: ");
             for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
-                System.out.println("\n\u001b[1m" + enemy.getEnemyName() + "\u001b[0m - " + enemy.getDescription());
+                System.out.println("\u001b[1m\u001B[31m" + enemy.getEnemyName() + "\u001b[0m - " + enemy.getDescription());
                 System.out.println("The enemy has: " + enemy.getEnemyHp() + "HP");
             }
         } else {
@@ -152,7 +158,9 @@ public class UserInterface {
             case NO_ENEMY -> System.out.println("There is no enemy of that name.");
             case NO_WEAPON -> System.out.println("You need to equip a weapon before starting a fight.");
             case ATTACK_ENEMY -> {
+                // printing if player is alive:
                 if (!adventure.getPlayer().died()) {
+                    // printing if you attack enemy and enemy not dying from the attack:
                     if (!adventure.getCurrentRoom().getEnemies().isEmpty()) {
                         System.out.println("Attacking " + userChoice + "...");
                         for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
@@ -161,8 +169,10 @@ public class UserInterface {
                                 currentHealth();
                             }
                         }
-                    } else {
+                    } // if you kill the enemy in currentRoom:
+                    else {
                         System.out.println("You killed the enemy with your attack!");
+                        // if you're in winning-room and the orc is dead, printing:
                         if (adventure.getCurrentRoom().getEnemies().isEmpty() && adventure.getCurrentRoom() == adventure.getWinningRoom()) {
                             System.out.println("Wow! You've defeated the orc, and won access to the party!");
                             System.out.println("-=-=-=-\u001b[1m ENJOY YOUR NIGHT! \u001b[0m-=-=-=-");
@@ -173,7 +183,8 @@ public class UserInterface {
                             System.out.println("The enemy also dropped their weapon!");
                         }
                     }
-                } else {
+                } // printing if player is dead:
+                else {
                     System.out.println("You died. Restart game to start over.");
                     gameRunning = false;
                 }
@@ -184,9 +195,9 @@ public class UserInterface {
     private void currentHealth() {
         System.out.println("Your health: " + adventure.getPlayer().getPlayerHp());
         if (adventure.getPlayer().getPlayerHp() < 25) {
-            System.out.println("Your health are at a critical level!");
+            System.out.println("\u001b[1m\u001B[31mYour health are at a critical level!\u001b[0m");
         } else if (adventure.getPlayer().getPlayerHp() < 51 && adventure.getPlayer().getPlayerHp() > 25) {
-            System.out.println("Your health are a little low, avoid fighting now...");
+            System.out.println("\u001b[1mYour health are a little low, avoid fighting now...\u001b[0m");
         } else {
             System.out.println("Your health is good, you can go in battle!");
         }
