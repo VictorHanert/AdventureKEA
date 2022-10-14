@@ -2,10 +2,16 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String RESET = "\u001B[0m";
     private Adventure adventure;
     private final Scanner scan = new Scanner(System.in).useLocale(Locale.ENGLISH);
     private boolean gameRunning = true;
     private String userChoice = "";
+
+    public UserInterface() {
+    }
 
     public void start() {
         adventure = new Adventure();
@@ -14,8 +20,10 @@ public class UserInterface {
     }
 
     public void welcome() {
-        System.out.println("Welcome to \u001b[1mKEA\u001b[0m!\nCan you find the way to the fredagsbar?");
-        System.out.println("Type 'help' for all commands.");
+        System.out.println(RED + "WELCOME TO:" + RESET);
+        System.out.println(GREEN + kea + RESET);
+        System.out.println(RED + "Can you find way to the fredagsbar?" + RESET);
+        System.out.println(RED + "Type 'help' for all commands." + RESET);
     }
 
     public void userInput() {
@@ -141,13 +149,13 @@ public class UserInterface {
             System.out.println("But before you can enter the party, you need to defeat: ");
             for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
                 System.out.println("\u001b[1m\u001B[31m" + enemy.getEnemyName() + "\u001b[0m - " + enemy.getDescription());
-                System.out.println("The enemy has: " + enemy.getEnemyHp() + "HP");
+                System.out.println("The enemy has: " + RED + enemy.getEnemyHp() + RESET + "HP");
             }
         } else {
             //Print enemies in currentRoom
             for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
                 System.out.println("\n\u001b[1mAn enemy is in the room: " + enemy.getEnemyName() + "\u001b[0m - " + enemy.getDescription());
-                System.out.println("The enemy has: " + enemy.getEnemyHp() + "HP");
+                System.out.println("The enemy has: " + RED + enemy.getEnemyHp() + RESET + "HP");
             }
         }
     }
@@ -164,7 +172,7 @@ public class UserInterface {
                     if (!adventure.getCurrentRoom().getEnemies().isEmpty()) {
                         System.out.println("Attacking " + userChoice + "...");
                         for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
-                            System.out.println(enemy.getEnemyName() + " is now: " + enemy.getEnemyHp() + " hp");
+                            System.out.println(enemy.getEnemyName() + " is now: " + RED +  enemy.getEnemyHp() + RESET + " hp");
                             if (!enemy.enemyDied()) {
                                 currentHealth();
                             }
@@ -185,7 +193,8 @@ public class UserInterface {
                     }
                 } // printing if player is dead:
                 else {
-                    System.out.println("You died. Restart game to start over.");
+                    System.out.println(RED + dead + RESET);
+                    System.out.println(RED + "Restart game to start over." + RESET);
                     gameRunning = false;
                 }
             }
@@ -193,7 +202,7 @@ public class UserInterface {
     }
 
     private void currentHealth() {
-        System.out.println("Your health: " + adventure.getPlayer().getPlayerHp());
+        System.out.println("Your health: " + GREEN + adventure.getPlayer().getPlayerHp() + RESET);
         if (adventure.getPlayer().getPlayerHp() < 25) {
             System.out.println("\u001b[1m\u001B[31mYour health are at a critical level!\u001b[0m");
         } else if (adventure.getPlayer().getPlayerHp() < 51 && adventure.getPlayer().getPlayerHp() > 25) {
@@ -220,4 +229,29 @@ public class UserInterface {
         System.out.println("Type 'damage' to get your current damage pr. hit");
         System.out.println("Type 'exit' to quit the adventure");
     }
-}
+
+    String kea = """
+                8 8888     ,88' 8 8888888888            .8.         \s
+                8 8888    ,88'  8 8888                 .888.        \s
+                8 8888   ,88'   8 8888                :88888.       \s
+                8 8888  ,88'    8 8888               . `88888.      \s
+                8 8888 ,88'     8 888888888888      .8. `88888.     \s
+                8 8888 88'      8 8888             .8`8. `88888.    \s
+                8 888888<       8 8888            .8' `8. `88888.   \s
+                8 8888 `Y8.     8 8888           .8'   `8. `88888.  \s
+                8 8888   `Y8.   8 8888          .888888888. `88888. \s
+                8 8888     `Y8. 8 888888888888 .8'       `8. `88888.\s""";
+    String dead = """
+            
+
+            ▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄\s
+             ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌
+              ▒██ ██░▒██░  ██▒▓██  ▒██░   ░██   █▌▒██▒▒███   ░██   █▌
+              ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░▓█▄   ▌░██░▒▓█  ▄ ░▓█▄   ▌
+              ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░▒████▓ ░██░░▒████▒░▒████▓\s
+               ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒     ▒▒▓  ▒ ░▓  ░░ ▒░ ░ ▒▒▓  ▒\s
+             ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░     ░ ▒  ▒  ▒ ░ ░ ░  ░ ░ ▒  ▒\s
+             ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░     ░ ░  ░  ▒ ░   ░    ░ ░  ░\s
+             ░ ░         ░ ░     ░           ░     ░     ░  ░   ░   \s
+             ░ ░                           ░                  ░     \s""";
+    }
