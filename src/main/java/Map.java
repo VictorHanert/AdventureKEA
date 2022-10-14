@@ -18,19 +18,19 @@ public class Map {
         room1.setSouth(room4);
         room1.createItem("lamp", "A metal thing that lights up the room.");
         room1.createFood("apple", "A shiny red round fruit", 10);
-        room1.createFood("biscuit", "A dry piece of some sort", 2);
+        room1.createFood("biscuit", "A dry piece of some sort", 6);
         room1.createMeleeWeapon("sword", "A heavy shiny sword", 20);
-        room1.createEnemy("lars", "He is very big and strong.", 50, 2, new MeleeWeapon("Giant sword", "A huge sword", 2), room1);
+        room1.createEnemy("anders", "He is very big and strong.", 50, 2, new MeleeWeapon("axe", "A huge axe that can be used to cut down trees (or heads..)", 17), room1);
 
         room2.setWest(room1);
         room2.setEast(room3);
-        room2.createItem("bottle", "A glass bottle with cold water");
+        room2.createFood("bottle", "A glass bottle with cold water", 3);
 
         room3.setWest(room2);
         room3.setSouth(room6);
-        room3.createEnemy("slikhair", "The biggest table tennis tryhard", 20, 5, new RangedWeapon("Table tennis bat", "Slikhairs own bat", 5, 10), room3);
+        room3.createEnemy("slikhair", "The biggest table tennis tryhard", 20, 5, new RangedWeapon("tabletennis-bat", "Slikhairs own bat", 5, 10), room3);
         room3.createRangedWeapon("chopping board", "A chopping board in plastic", 10, 10);
-        room3.createItem("beer", "A green can with the name 'Carlsberg' on it");
+        room3.createFood("beer", "A green can with the name 'Carlsberg' on it", 8);
 
         room4.setNorth(room1);
         room4.setSouth(room7);
@@ -39,7 +39,7 @@ public class Map {
 
         room5.setSouth(room8);
         room5.createFood("sambuca", "A big glass-bottle with a transparent liquid inside", 999);
-        room5.createEnemy("the orc", "A very scary creature thats protects the 'Fredags-bar against strangers.", 99, 50, new MeleeWeapon("Fists", "His hands are huge.", 50), room5);
+        room5.createEnemy("the orc", "A very scary creature that protects the 'Fredags-bar against strangers.", 99, 50, new MeleeWeapon("Fists", "His hands are huge.", 50), room5);
 
         room6.setNorth(room3);
         room6.setSouth(room9);
@@ -55,10 +55,13 @@ public class Map {
         room8.setWest(room7);
         room8.setNorth(room5);
         room8.setEast(room9);
+        room8.createItem("paper", "a blank white peace of paper");
+        room8.createEnemy("teacher", "A old boring teacher who hates her students", 5, 10, new MeleeWeapon("pencil", "A sharp pencil that can make you blind", 10), room8);
 
         room9.setWest(room8);
         room9.setNorth(room6);
-        room9.createMeleeWeapon("computer", "a grey Intel laptop", 1);
+        room9.createItem("computer", "a grey Intel laptop");
+        room9.createEnemy("nerd", "A very scary creature that sits with his head deep down in the computer-screen", 9, 0, new MeleeWeapon("hacked-computer", "The nerds personal computer that can kill everyone with the right commands", 40), room9);
 
         currentRoom = room1;
         endRoom = room5;
